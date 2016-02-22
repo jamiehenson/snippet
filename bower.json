@@ -1,0 +1,34 @@
+{
+  "name": "snippet",
+  "authors": [
+    "Jamie Henson <jhenson47@gmail.com>"
+  ],
+  "description": "An easy way to glam up your truncated comments/reviews/whatever!",
+  "main": "",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "snippet",
+    "review",
+    "comment",
+    "expand",
+    "contract",
+    "read",
+    "more",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/jamiehenson/snippet",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1"
+  }
+}

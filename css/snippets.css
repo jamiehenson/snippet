@@ -1,0 +1,44 @@
+.snippet-box {
+  position: relative;
+}
+
+.snippet-box .snippet-content {
+  max-height: 100px;
+  transition: max-height 0.5s ease;
+  overflow: hidden;
+}
+
+.snippet-box .snippet-content.open {
+  margin-bottom: 1em;
+}
+
+.snippet-box .snippet-expander {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 30px 0 10px 0;
+  box-shadow: inset 0px -25px 35px -22px grey;
+  transition: box-shadow 0.5s ease;
+}
+
+.snippet-box .snippet-expander:after {
+  content: attr(data-expand);
+  color: white;
+  background: #0277bd;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.snippet-box .snippet-expander.open {
+  box-shadow: none;
+  bottom: -1em;
+}
+
+.snippet-box .snippet-expander.open:after {
+  content: attr(data-collapse);
+}
