@@ -35,4 +35,86 @@
       }
     }
   }
+
+  // Size styles
+  .snippet-xs {
+    &:after {
+      font-size: 12px;
+      padding: 1px 5px;
+    }
+  }
+  .snippet-sm {
+    &:after {
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+  }
+  .snippet-md {
+    &:after {
+      font-size: 14px;
+      padding: 7px 13px;
+    }
+  }
+  .snippet-lg {
+    &:after {
+      font-size: 18px;
+      padding: 10px 16px;
+    }
+  }
+
+  // Colour styles
+  .snippet-default {
+    &:after {
+      background: white;
+      border: 1px solid #ccc;
+    }
+    &:hover:after {
+      background: #adadad;
+    }
+  }
+  .snippet-primary {
+    &:after {
+      background: #337ab7;
+      border: 1px solid #2e6da4;
+    }
+    &:hover:after {
+      background: #204d74;
+    }
+  }
+  .snippet-success {
+    &:after {
+      background: #5cb85c;
+      border: 1px solid #4cae4c;
+    }
+    &:hover:after {
+      background: #398439;
+    }
+  }
+  .snippet-info {
+    &:after {
+      background: #5bc0de;
+      border: 1px solid #46b8da;
+    }
+    &:hover:after {
+      background: #269abc;
+    }
+  }
+  .snippet-warning {
+    &:after {
+      background: #f0ad4e;
+      border: 1px solid #eea236;
+    }
+    &:hover:after {
+      background: #d58512;
+    }
+  }
+  .snippet-danger {
+    &:after {
+      background: #d9534f;
+      border: 1px solid #d43f3a;
+    }
+    &:hover:after {
+      background: #ac2925;
+    }
+  }
 }

@@ -44,3 +44,77 @@
 .snippet-box .snippet-expander.open:after {
   content: attr(data-collapse);
 }
+
+.snippet-box .snippet-xs:after {
+  font-size: 12px;
+  padding: 1px 5px;
+}
+
+.snippet-box .snippet-sm:after {
+  font-size: 12px;
+  padding: 5px 10px;
+}
+
+.snippet-box .snippet-md:after {
+  font-size: 14px;
+  padding: 7px 13px;
+}
+
+.snippet-box .snippet-lg:after {
+  font-size: 18px;
+  padding: 10px 16px;
+}
+
+.snippet-box .snippet-default:after {
+  background: white;
+  border: 1px solid #ccc;
+}
+
+.snippet-box .snippet-default:hover:after {
+  background: #adadad;
+}
+
+.snippet-box .snippet-primary:after {
+  background: #337ab7;
+  border: 1px solid #2e6da4;
+}
+
+.snippet-box .snippet-primary:hover:after {
+  background: #204d74;
+}
+
+.snippet-box .snippet-success:after {
+  background: #5cb85c;
+  border: 1px solid #4cae4c;
+}
+
+.snippet-box .snippet-success:hover:after {
+  background: #398439;
+}
+
+.snippet-box .snippet-info:after {
+  background: #5bc0de;
+  border: 1px solid #46b8da;
+}
+
+.snippet-box .snippet-info:hover:after {
+  background: #269abc;
+}
+
+.snippet-box .snippet-warning:after {
+  background: #f0ad4e;
+  border: 1px solid #eea236;
+}
+
+.snippet-box .snippet-warning:hover:after {
+  background: #d58512;
+}
+
+.snippet-box .snippet-danger:after {
+  background: #d9534f;
+  border: 1px solid #d43f3a;
+}
+
+.snippet-box .snippet-danger:hover:after {
+  background: #ac2925;
+}
