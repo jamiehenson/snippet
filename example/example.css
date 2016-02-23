@@ -1,6 +1,12 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   background: #81c0c5;
   color: white;
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -11,4 +17,21 @@ h1 {
 .comment {
   width: 500px;
   height: 500px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #6ea2c5;
+  color: white;
+  line-height: 30px;
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: 200;
+}
+
+.footer a {
+  color: white;
 }
