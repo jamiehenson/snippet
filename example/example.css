@@ -3,6 +3,11 @@ body {
   color: white;
 }
 
+h1 {
+  font-family: "Pacifico", Helvetica;
+  font-size: 4em;
+}
+
 .comment {
   width: 500px;
   height: 500px;

@@ -1,3 +1,5 @@
+- text = "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+
 html(lang="en")
   head
     meta(charset="utf-8")
@@ -7,33 +9,38 @@ html(lang="en")
     link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet")
     link(href="dist/css/snippets.css", rel="stylesheet")
     link(href="example/example.css", rel="stylesheet")
+    link(href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css')
     script(src="https://code.jquery.com/jquery-2.2.0.min.js")
     script(src="dist/js/snippets.js")
     
   body
     .container
       h1 Snippet
-      h2 An easy way to glam up your truncated comments/reviews/whatever!
+      h3 An easy way to glam up your truncated comments/reviews/whatever!
       .row
-        .col-xs-6
+        .col-sm-6
+          h4 Primary (XS)
           .snippet-box
             .snippet-content
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mattis blandit erat ut iaculis. Sed consequat dolor felis, et lobortis nunc pharetra at. Fusce ac orci id massa venenatis molestie a sit amet quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed blandit dignissim ultricies. In sagittis erat quis varius viverra. Morbi pretium in ipsum vitae scelerisque. Fusce ullamcorper dictum molestie. Aliquam aliquam porttitor tellus in eleifend.
-              | Fusce non tellus ligula. Vestibulum interdum, justo at euismod facilisis, tellus arcu dictum tellus, quis auctor libero mauris at ligula. Suspendisse laoreet porta tellus eget ultricies. Sed fermentum arcu nec mi bibendum, nec varius ex pretium. Sed a lacus ultrices, posuere elit eu, dignissim enim. Duis quis dui eu ex placerat tristique quis eu neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ac odio lacus.
-              | Nunc odio quam, suscipit at pharetra ut, sodales ut urna. Pellentesque eleifend urna sed augue condimentum commodo. Sed sed massa convallis, aliquet massa ullamcorper, viverra ante. Pellentesque nec est sed leo pharetra consequat. Etiam ullamcorper, dolor eu luctus interdum, orci mauris blandit odio, vel pulvinar diam lorem non nisl. Vestibulum eleifend aliquet turpis sit amet finibus. Morbi vitae mauris urna.
-              | Morbi quis sapien in enim sollicitudin sodales non nec nibh. Nulla faucibus sed lacus eu convallis. Ut vitae tellus eget quam consequat placerat. Pellentesque in luctus magna. Praesent sapien justo, varius ut nibh vitae, viverra varius ante. Integer vehicula ut dolor eget pretium. Praesent dignissim ipsum non massa vulputate, sit amet varius tortor consequat. In sagittis est tempus massa tempus, sit amet vestibulum massa molestie. Nunc in varius erat.
-              | Nullam vitae arcu aliquet felis facilisis scelerisque. Vestibulum in semper elit, vitae venenatis magna. Fusce eu volutpat quam, ac ultricies leo. Nullam tristique at ante eu blandit. Ut eros lorem, accumsan a nibh sed, placerat condimentum tortor. Etiam nec imperdiet diam, nec volutpat nisi. Nulla ut lacinia nibh, nec mattis lacus. Morbi molestie tempus magna ut faucibus.
-              | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla ullamcorper malesuada tincidunt. Morbi at iaculis orci. In hac habitasse platea dictumst. Suspendisse eleifend lectus nec leo dictum facilisis ac vitae nisl. Vestibulum pellentesque sem et eros tempor tempor. Sed pharetra eleifend velit ornare venenatis.
-              | Aenean mattis enim at justo consequat, non aliquam lorem maximus. Quisque enim tellus, imperdiet non faucibus eget, iaculis ac odio. Sed iaculis, nisl et posuere ultrices, ex nisi rhoncus risus, ut pharetra turpis quam et tellus. Maecenas nisi neque, feugiat eget dapibus sed, egestas non diam. Sed dapibus pretium ipsum et iaculis. Phasellus non tellus in ex facilisis viverra. Duis aliquam eros vitae tortor dictum, vel hendrerit lorem eleifend.
-            .snippet-expander(data-collapse="less", data-expand="more")
-        .col-xs-6
+              = text
+            .snippet-expander.snippet-primary.snippet-xs(data-collapse="less", data-expand="more")
+        .col-sm-6
+          h4 Success (SM)
           .snippet-box
             .snippet-content
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque mattis blandit erat ut iaculis. Sed consequat dolor felis, et lobortis nunc pharetra at. Fusce ac orci id massa venenatis molestie a sit amet quam. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed blandit dignissim ultricies. In sagittis erat quis varius viverra. Morbi pretium in ipsum vitae scelerisque. Fusce ullamcorper dictum molestie. Aliquam aliquam porttitor tellus in eleifend.
-              | Fusce non tellus ligula. Vestibulum interdum, justo at euismod facilisis, tellus arcu dictum tellus, quis auctor libero mauris at ligula. Suspendisse laoreet porta tellus eget ultricies. Sed fermentum arcu nec mi bibendum, nec varius ex pretium. Sed a lacus ultrices, posuere elit eu, dignissim enim. Duis quis dui eu ex placerat tristique quis eu neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean ac odio lacus.
-              | Nunc odio quam, suscipit at pharetra ut, sodales ut urna. Pellentesque eleifend urna sed augue condimentum commodo. Sed sed massa convallis, aliquet massa ullamcorper, viverra ante. Pellentesque nec est sed leo pharetra consequat. Etiam ullamcorper, dolor eu luctus interdum, orci mauris blandit odio, vel pulvinar diam lorem non nisl. Vestibulum eleifend aliquet turpis sit amet finibus. Morbi vitae mauris urna.
-              | Morbi quis sapien in enim sollicitudin sodales non nec nibh. Nulla faucibus sed lacus eu convallis. Ut vitae tellus eget quam consequat placerat. Pellentesque in luctus magna. Praesent sapien justo, varius ut nibh vitae, viverra varius ante. Integer vehicula ut dolor eget pretium. Praesent dignissim ipsum non massa vulputate, sit amet varius tortor consequat. In sagittis est tempus massa tempus, sit amet vestibulum massa molestie. Nunc in varius erat.
-              | Nullam vitae arcu aliquet felis facilisis scelerisque. Vestibulum in semper elit, vitae venenatis magna. Fusce eu volutpat quam, ac ultricies leo. Nullam tristique at ante eu blandit. Ut eros lorem, accumsan a nibh sed, placerat condimentum tortor. Etiam nec imperdiet diam, nec volutpat nisi. Nulla ut lacinia nibh, nec mattis lacus. Morbi molestie tempus magna ut faucibus.
-              | Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla ullamcorper malesuada tincidunt. Morbi at iaculis orci. In hac habitasse platea dictumst. Suspendisse eleifend lectus nec leo dictum facilisis ac vitae nisl. Vestibulum pellentesque sem et eros tempor tempor. Sed pharetra eleifend velit ornare venenatis.
-              | Aenean mattis enim at justo consequat, non aliquam lorem maximus. Quisque enim tellus, imperdiet non faucibus eget, iaculis ac odio. Sed iaculis, nisl et posuere ultrices, ex nisi rhoncus risus, ut pharetra turpis quam et tellus. Maecenas nisi neque, feugiat eget dapibus sed, egestas non diam. Sed dapibus pretium ipsum et iaculis. Phasellus non tellus in ex facilisis viverra. Duis aliquam eros vitae tortor dictum, vel hendrerit lorem eleifend.
-            .snippet-expander(data-collapse="less", data-expand="more")
+              = text
+            .snippet-expander.snippet-success.snippet-sm(data-collapse="less", data-expand="more")
+      br
+      .row
+        .col-sm-6
+          h4 Warning (MD)
+          .snippet-box
+            .snippet-content
+              = text
+            .snippet-expander.snippet-warning.snippet-md(data-collapse="less", data-expand="more")
+        .col-sm-6
+          h4 Danger (LG)
+          .snippet-box
+            .snippet-content
+              = text
+            .snippet-expander.snippet-danger.snippet-lg(data-collapse="less", data-expand="more")
