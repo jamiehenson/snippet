@@ -1,6 +1,24 @@
+var colour = ["text", "default", "primary", "success", "warning", "danger"];
+var size = ["xs", "sm", "md", "lg"];
+var align = ["left", "center", "right", "full"];
+
 $(document).ready(function() {
-  var colour = ["default", "primary", "success", "warning", "danger"]
-  var size = ["xs", "sm", "md", "lg"]
+  redoCodebox();
+
+  $( "#exampletext" ).keyup(function() {
+    $(".snippet-content").text($("#exampletext").val());
+    redoCodebox();
+  });
+
+  $( "#expand" ).keyup(function() {
+    $(".snippet-expander").attr("data-expand", $(this).val());
+    redoCodebox();
+  });
+
+  $( "#collapse" ).keyup(function() {
+    $(".snippet-expander").attr("data-collapse", $(this).val());
+    redoCodebox();
+  });
 
   $('.demo').click(function() {
     var classes = $(this).attr('class').split(' ')
@@ -11,6 +29,13 @@ $(document).ready(function() {
     });
 
     $(".snippet-expander").removeClass(excluded.join(" ")).addClass("snippet-" + variant)
-    $(".codebox").text("<div class=\'" + $(".snippet-expander").attr('class') + "\'></div>");
+    redoCodebox();
   });
 });
+
+function redoCodebox() {
+  $(".codebox").text("<div class=\'" + $(".snippet-expander").attr('class') +
+    "\' data-expand=\'" + $(".snippet-expander").attr("data-expand") +
+    "\' data-collapse=\'" + $(".snippet-expander").attr("data-collapse") +
+    "\'></div>");
+}

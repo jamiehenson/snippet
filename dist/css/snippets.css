@@ -50,6 +50,10 @@
 }
 
 .snippet-box .snippet-left {
+  text-align: center;
+}
+
+.snippet-box .snippet-left {
   text-align: left;
 }
 

@@ -11,37 +11,65 @@ html(lang="en")
     link(href="example/example.css", rel="stylesheet")
     link(href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css')
     script(src="https://code.jquery.com/jquery-2.2.0.min.js")
+    script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
     script(src="dist/js/snippets.js")
     script(src="example/example.js")
     
   body
-    .container
+    .container.main
       h1 Snippet
       h3 An easy way to glam up your truncated comments/reviews/whatever!
       hr
       
       .row
-        .col-sm-4
-          h4 Colours
-          .list-group
-            a(class="list-group-item demo colour default") snippet-default
-            a(class="list-group-item demo colour primary") snippet-primary
-            a(class="list-group-item demo colour success") snippet-success
-            a(class="list-group-item demo colour warning") snippet-warning
-            a(class="list-group-item demo colour danger") snippet-danger
-          h4 Sizes
-          .list-group
-            a(class="list-group-item demo size xs") snippet-xs
-            a(class="list-group-item demo size sm") snippet-sm
-            a(class="list-group-item demo size md") snippet-md
-            a(class="list-group-item demo size lg") snippet-lg
-        .col-sm-8
-          .snippet-box
-            .snippet-content
-              = text
-            .snippet-expander.snippet-sm(data-collapse="less", data-expand="more")
-          p.code
-            pre.codebox .snippet-expander.snippet-primary.snippet-xs
+        .col-xs-4
+          row
+            .col-xs-12
+              h4 Example text
+              form
+                .form-group
+                  textarea#exampletext(rows="5" class="form-control")= text
+              h4 Labels
+              form
+                .form-group
+                  label(for="expand") Expand text
+                  input#expand(type="text" class="form-control" value="more")
+                .form-group
+                  label(for="collapse") Collapse text
+                  input#collapse(type="text" class="form-control" value="less")
+            .clearfix
+            .col-xs-12.col-lg-6
+              h4 Bootstrap Colours
+              .list-group
+                a(class="list-group-item demo colour text") snippet-text
+                a(class="list-group-item demo colour default") snippet-default
+                a(class="list-group-item demo colour primary") snippet-primary
+                a(class="list-group-item demo colour success") snippet-success
+                a(class="list-group-item demo colour warning") snippet-warning
+                a(class="list-group-item demo colour danger") snippet-danger
+            .col-xs-12.col-lg-6
+              h4 Sizes
+              .list-group
+                a(class="list-group-item demo size xs") snippet-xs
+                a(class="list-group-item demo size sm") snippet-sm
+                a(class="list-group-item demo size md") snippet-md
+                a(class="list-group-item demo size lg") snippet-lg
+            .clearfix
+            .col-xs-12.col-lg-6
+              h4 Alignment
+              .list-group
+                a(class="list-group-item demo align left") snippet-left
+                a(class="list-group-item demo align center") snippet-center
+                a(class="list-group-item demo align right") snippet-right
+                a(class="list-group-item demo align full") snippet-full
+        .col-xs-8
+          .demo-wrapper
+            .snippet-box
+              .snippet-content
+                = text
+              .snippet-expander.snippet-sm(data-collapse="less", data-expand="more")
+            p.code
+              pre.codebox
       hr
       
       h3 Basic markup
