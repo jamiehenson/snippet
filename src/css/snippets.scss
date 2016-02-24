@@ -36,6 +36,24 @@
     }
   }
 
+  // Configurations
+  .snippet-right {
+    text-align: right;
+  }
+
+  .snippet-left {
+    text-align: left;
+  }
+
+  .snippet-full {
+    text-align: left;
+    &:after {
+      text-align: center;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
   // Size styles
   .snippet-xs {
     &:after {
@@ -63,6 +81,15 @@
   }
 
   // Colour styles
+  .snippet-text {
+    &:after {
+      background: none;
+      border: none;
+    }
+    &:hover:after {
+      background: none;
+    }
+  }
   .snippet-default {
     &:after {
       background: white;

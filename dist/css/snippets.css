@@ -45,6 +45,24 @@
   content: attr(data-collapse);
 }
 
+.snippet-box .snippet-right {
+  text-align: right;
+}
+
+.snippet-box .snippet-left {
+  text-align: left;
+}
+
+.snippet-box .snippet-full {
+  text-align: left;
+}
+
+.snippet-box .snippet-full:after {
+  text-align: center;
+  position: absolute;
+  width: 100%;
+}
+
 .snippet-box .snippet-xs:after {
   font-size: 12px;
   padding: 1px 5px;
@@ -63,6 +81,15 @@
 .snippet-box .snippet-lg:after {
   font-size: 18px;
   padding: 10px 16px;
+}
+
+.snippet-box .snippet-text:after {
+  background: none;
+  border: none;
+}
+
+.snippet-box .snippet-text:hover:after {
+  background: none;
 }
 
 .snippet-box .snippet-default:after {
