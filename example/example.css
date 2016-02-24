@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background: #81c0c5;
+  background: #6ea2c5;
   color: white;
   margin-bottom: 30px;
 }
@@ -12,6 +12,10 @@ body {
 h1 {
   font-family: "Pacifico", Helvetica;
   font-size: 4em;
+}
+
+code {
+  margin: 0 5px;
 }
 
 .comment {

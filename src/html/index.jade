@@ -1,4 +1,4 @@
-- text = "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
+- text = "The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee. The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who would attempt to poison and destroy My brothers. And you will know My name is the Lord when I lay My vengeance upon thee."
 
 html(lang="en")
   head
@@ -12,42 +12,56 @@ html(lang="en")
     link(href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css')
     script(src="https://code.jquery.com/jquery-2.2.0.min.js")
     script(src="dist/js/snippets.js")
+    script(src="example/example.js")
     
   body
     .container
       h1 Snippet
       h3 An easy way to glam up your truncated comments/reviews/whatever!
+      hr
+      
       .row
-        .col-sm-6
-          h4 Primary (XS)
+        .col-sm-4
+          h4 Colours
+          .list-group
+            a(class="list-group-item demo colour default") snippet-default
+            a(class="list-group-item demo colour primary") snippet-primary
+            a(class="list-group-item demo colour success") snippet-success
+            a(class="list-group-item demo colour warning") snippet-warning
+            a(class="list-group-item demo colour danger") snippet-danger
+          h4 Sizes
+          .list-group
+            a(class="list-group-item demo size xs") snippet-xs
+            a(class="list-group-item demo size sm") snippet-sm
+            a(class="list-group-item demo size md") snippet-md
+            a(class="list-group-item demo size lg") snippet-lg
+        .col-sm-8
           .snippet-box
             .snippet-content
               = text
-            .snippet-expander.snippet-primary.snippet-xs(data-collapse="less", data-expand="more")
-        .col-sm-6
-          h4 Success (SM)
-          .snippet-box
-            .snippet-content
-              = text
-            .snippet-expander.snippet-success.snippet-sm(data-collapse="less", data-expand="more")
-      br
-      .row
-        .col-sm-6
-          h4 Warning (MD)
-          .snippet-box
-            .snippet-content
-              = text
-            .snippet-expander.snippet-warning.snippet-md(data-collapse="less", data-expand="more")
-        .col-sm-6
-          h4 Danger (LG)
-          .snippet-box
-            .snippet-content
-              = text
-            .snippet-expander.snippet-danger.snippet-lg(data-collapse="less", data-expand="more")
-
+            .snippet-expander.snippet-sm(data-collapse="less", data-expand="more")
+          p.code
+            pre.codebox .snippet-expander.snippet-primary.snippet-xs
+      hr
+      
+      h3 Basic markup
+      p It's very easy to set up one of these boxes. Just include <strong>snippets.css</strong> (or the supplied SASS version) and <strong>snippets.js</strong> in your page, and then whack down the following markup:
+      
+      pre
+        | &lt;div class="snippet-box"&gt;
+        | &nbsp;&nbsp;&lt;div class="snippet-content"&gt;
+        | &nbsp;&nbsp;&nbsp;&nbsp;CONTENT GOES HERE
+        | &nbsp;&nbsp;&lt;/div&gt;
+        | &nbsp;&nbsp;&lt;div class="snippet-expander"&gt;&lt;/div&gt;
+        | &lt;/div&gt;
+        
+      p 
+        | Append whatever styling classes you like to the
+        code snippet-expander
+        | element. More on all of that below:
 
     footer.footer
       .container
         span Made with mild amusement in London by 
         a(href="https://github.com/jamiehenson") <strong>J. Henson</strong>
-        , 2016
+        |, 2016
