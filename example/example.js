@@ -1,3 +1,4 @@
+var style = ["pulldown", "reveal"];
 var colour = ["text", "default", "primary", "success", "warning", "danger"];
 var size = ["xs", "sm", "md", "lg"];
 var align = ["left", "center", "right", "full"];
@@ -26,6 +27,7 @@ $(document).ready(function() {
     var type = classes.pop();
     $(this).addClass("active")
     var excluded = $.map($(eval(type)).not([variant]), function(value, index) {
+      console.log(excluded)
       $(".demo." + type + "." + value).removeClass("active")
       return ["snippet-" + value];
     });

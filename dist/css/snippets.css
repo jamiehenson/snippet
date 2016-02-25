@@ -13,7 +13,7 @@
   margin-bottom: 1em;
 }
 
-.snippet-box .snippet-expander {
+.snippet-box .snippet-pulldown {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -26,7 +26,7 @@
   transition: box-shadow 0.5s ease;
 }
 
-.snippet-box .snippet-expander:after {
+.snippet-box .snippet-pulldown:after {
   content: attr(data-expand);
   color: white;
   background: #0277bd;
@@ -36,12 +36,46 @@
   font-weight: bold;
 }
 
-.snippet-box .snippet-expander.open {
+.snippet-box .snippet-pulldown.open {
   box-shadow: none;
   bottom: -1em;
 }
 
-.snippet-box .snippet-expander.open:after {
+.snippet-box .snippet-pulldown.open:after {
+  content: attr(data-collapse);
+}
+
+.snippet-box .snippet-reveal {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  box-shadow: 0px 0px 2px 0px black;
+  background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  line-height: 100px;
+}
+
+.snippet-box .snippet-reveal:after {
+  content: attr(data-expand);
+  color: white;
+  background: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.snippet-box .snippet-reveal.open {
+  background: none;
+  box-shadow: none;
+  bottom: -1em;
+}
+
+.snippet-box .snippet-reveal.open:after {
   content: attr(data-collapse);
 }
 
