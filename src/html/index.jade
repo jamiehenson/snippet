@@ -29,16 +29,26 @@ html(lang="en")
               form
                 .form-group
                   textarea#exampletext(rows="5" class="form-control")= text
-              h4 Labels
-              form
-                .form-group
-                  label(for="expand") Expand text
-                  input#expand(type="text" class="form-control" value="more")
-                .form-group
-                  label(for="collapse") Collapse text
-                  input#collapse(type="text" class="form-control" value="less")
-            .clearfix
-            .col-xs-12.col-lg-6
+              .row
+                .col-xs-12
+                  h4 Labels
+                form
+                .col-lg-6
+                  .form-group
+                    label(for="expand") Expand text
+                    input#expand(type="text" class="form-control" value="more")
+                .col-lg-6
+                  .form-group
+                    label(for="collapse") Collapse text
+                    input#collapse(type="text" class="form-control" value="less")
+            .col-xs-12
+              h4 Type
+              .list-group
+                a(class="list-group-item") 
+                  span Pull-down 
+                  em (default)
+                a(class="list-group-item") Reveal
+            .col-lg-6
               h4 Bootstrap Colours
               .list-group
                 a(class="list-group-item demo colour text") snippet-text
@@ -47,7 +57,7 @@ html(lang="en")
                 a(class="list-group-item demo colour success") snippet-success
                 a(class="list-group-item demo colour warning") snippet-warning
                 a(class="list-group-item demo colour danger") snippet-danger
-            .col-xs-12.col-lg-6
+            .col-lg-6
               h4 Sizes
               .list-group
                 a(class="list-group-item demo size xs") snippet-xs
@@ -55,7 +65,7 @@ html(lang="en")
                 a(class="list-group-item demo size md") snippet-md
                 a(class="list-group-item demo size lg") snippet-lg
             .clearfix
-            .col-xs-12.col-lg-6
+            .col-lg-6
               h4 Alignment
               .list-group
                 a(class="list-group-item demo align left") snippet-left

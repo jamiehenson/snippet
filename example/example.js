@@ -24,7 +24,9 @@ $(document).ready(function() {
     var classes = $(this).attr('class').split(' ')
     var variant = classes.pop();
     var type = classes.pop();
+    $(this).addClass("active")
     var excluded = $.map($(eval(type)).not([variant]), function(value, index) {
+      $(".demo." + type + "." + value).removeClass("active")
       return ["snippet-" + value];
     });
 
