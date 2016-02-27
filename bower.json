@@ -20,13 +20,13 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/jamiehenson/snippet",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "example"
   ],
   "dependencies": {
     "jquery": "^2.2.1"
