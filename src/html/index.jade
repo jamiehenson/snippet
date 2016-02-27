@@ -14,13 +14,13 @@ html(lang="en")
     script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
     script(src="dist/js/snippets.js")
     script(src="example/example.js")
-    
+
   body
     .container.main
       h1 Snippet
       h3 An easy way to glam up your truncated comments/reviews/whatever!
       hr
-      
+
       .row
         .col-xs-4
           row
@@ -44,8 +44,8 @@ html(lang="en")
             .col-xs-12
               h4 Style
               .list-group
-                a(class="list-group-item demo style pulldown") 
-                  span Pull-down 
+                a(class="list-group-item demo style pulldown")
+                  span Pull-down
                   em (default)
                 a(class="list-group-item demo style reveal") Reveal
             .col-lg-6
@@ -77,14 +77,24 @@ html(lang="en")
             .snippet-box
               .snippet-content
                 = text
-              .snippet-expander.snippet-reveal.snippet-md.snippet-success(data-collapse="less", data-expand="more")
+              .snippet-expander.snippet-pulldown.snippet-md.snippet-success(data-collapse="less", data-expand="more")
             p.code
               pre.codebox
       hr
-      
+
+      h3 Installation
+      p
+        | The easy way is to install snippet with
+        code bower install snippet
+        |. Alternatively, download the package, and include snippet.css and snippet.js from
+        code /dist
+        | in an appropriate place within your project.
+
+      p Then...
+
       h3 Basic markup
       p It's very easy to set up one of these boxes. Just include <strong>snippets.css</strong> (or the supplied SASS version) and <strong>snippets.js</strong> in your page, and then whack down the following markup:
-      
+
       pre
         | &lt;div class="snippet-box"&gt;
         | &nbsp;&nbsp;&lt;div class="snippet-content"&gt;
@@ -92,14 +102,15 @@ html(lang="en")
         | &nbsp;&nbsp;&lt;/div&gt;
         | &nbsp;&nbsp;&lt;div class="snippet-expander"&gt;&lt;/div&gt;
         | &lt;/div&gt;
-        
-      p 
+
+      p
         | Append whatever styling classes you like to the
         code snippet-expander
-        | element. More on all of that below:
+        | element. Play about with it above!
 
     footer.footer
       .container
-        span Made with mild amusement in London by 
-        a(href="https://github.com/jamiehenson") <strong>J. Henson</strong>
-        |, 2016
+        p
+          | Made in an effort to seek mild technical gratification in London by
+          a(href="https://github.com/jamiehenson") <strong> Jamie Henson</strong>
+          |, 2016
