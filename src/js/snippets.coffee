@@ -11,10 +11,9 @@ $(document).ready ->
     boxSize = if $(this).hasClass('open') then openHeight else '100px'
     $(this).siblings('.snippet-content').css 'max-height', boxSize
 
-    if $('.snippet-expander').hasClass("snippet-reveal")
-      if $('.snippet-expander').hasClass("open-delayed")
-        $('.snippet-expander').removeClass("open-delayed")
+    if $(this).hasClass("snippet-reveal")
+      if $(this).hasClass("open-delayed")
+        $(this).removeClass("open-delayed")
       else
-        setTimeout (->
-          $('.snippet-expander').addClass("open-delayed")
-        ), 500
+        element = $(this)
+        setTimeout (-> element.addClass("open-delayed")), 500
