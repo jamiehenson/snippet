@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background: #6ea2c5;
+  background: #67BCDB;
   color: white;
   margin-bottom: 30px;
 }
@@ -19,7 +19,7 @@ code {
 }
 
 .container.main {
-  background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.35);
   border-radius: 0 0 5px 5px;
 }
 
@@ -36,17 +36,21 @@ code {
   transition: background-color 0.5s ease;
 }
 
+.github-button {
+  margin-top: 1em;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 30px;
-  background-color: #6ea2c5;
   color: white;
   line-height: 30px;
   text-align: center;
-  font-size: 0.8em;
-  font-weight: 200;
+  font-size: 0.9em;
+  font-weight: 300;
+  text-shadow: 0px 0px 1px black;
 }
 
 .footer a {
