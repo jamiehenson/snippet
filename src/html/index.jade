@@ -79,10 +79,13 @@ html(lang="en")
                 a(class="list-group-item demo align full") snippet-full
         .col-xs-8
           .demo-wrapper
-            .snippet-box
-              .snippet-content
-                = text
-              .snippet-expander.snippet-pulldown.snippet-md.snippet-success(data-collapse="less", data-expand="more")
+            .well
+              .snippet-box
+                .snippet-content
+                  = text
+                .snippet-expander.snippet-pulldown.snippet-md.snippet-success(data-collapse="less", data-expand="more")
+            hr
+            h4 Markup to recreate the above:
             p.code
               pre.codebox
       hr

@@ -28,10 +28,19 @@ $(document).ready(function() {
     var type = classes.pop();
     $(this).addClass("active")
     var excluded = $.map($(eval(type)).not([variant]), function(value, index) {
-      console.log(excluded)
       $(".demo." + type + "." + value).removeClass("active")
       return ["snippet-" + value];
     });
+
+    if (type == "tint") {
+      if (variant == "tint-dark") {
+        $(".well").css("background-color", "#333");
+        $(".snippet-box").css("color", "white");
+      } else {
+        $(".well").css("background-color", "#f5f5f5");
+        $(".snippet-box").css("color", "#333");
+      }
+    }
 
     $(".snippet-expander").removeClass(excluded.join(" ")).addClass("snippet-" + variant)
     redoCodebox();

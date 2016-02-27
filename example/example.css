@@ -28,6 +28,14 @@ code {
   height: 500px;
 }
 
+.snippet-box {
+  color: #333;
+}
+
+.well {
+  transition: background-color 0.5s ease;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
