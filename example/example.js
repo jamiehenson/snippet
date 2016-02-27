@@ -2,6 +2,7 @@ var style = ["pulldown", "reveal"];
 var colour = ["text", "default", "primary", "success", "warning", "danger"];
 var size = ["xs", "sm", "md", "lg"];
 var align = ["left", "center", "right", "full"];
+var tint = ["tint-dark", "tint-light"];
 
 $(document).ready(function() {
   redoCodebox();
