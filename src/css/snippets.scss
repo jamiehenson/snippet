@@ -5,7 +5,7 @@
     transition: max-height 0.5s ease;
     overflow: hidden;
     &.open {
-      margin-bottom: 1em;
+      margin-bottom: 3em;
     }
   }
 
@@ -31,7 +31,7 @@
     }
     &.open {
       box-shadow: none;
-      bottom: -1em;
+      bottom: -2.8em;
       &:after {
         content: attr(data-collapse);
       }
@@ -44,7 +44,6 @@
     top: 0;
     width: 100%;
     text-align: center;
-    margin: 0;
     box-shadow: 0px 0px 2px 0px black;
     background: rgba(0,0,0,0.7);
     transition: all 0.5s ease;
@@ -61,9 +60,20 @@
     &.open {
       background: none;
       box-shadow: none;
-      bottom: -1em;
+      transition: all 0.5s ease;
+      opacity: 1;
       &:after {
         content: attr(data-collapse);
+        transition: all 0.5s ease;
+        opacity: 0;
+      }
+    }
+    &.open-delayed {
+      position: relative;
+      margin: 1em 0;
+      &:after {
+        opacity: 1 !important;
+        line-height: initial;
       }
     }
   }
@@ -73,7 +83,7 @@
     text-align: right;
   }
 
-  .snippet-left {
+  .snippet-center {
     text-align: center;
   }
 
@@ -130,9 +140,11 @@
     &:after {
       background: white;
       border: 1px solid #ccc;
+      color: #333;
     }
     &:hover:after {
-      background: #adadad;
+      background: #e6e6e6;
+      border-color: #adadad;
     }
   }
   .snippet-primary {

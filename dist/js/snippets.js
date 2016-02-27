@@ -6,6 +6,15 @@ $(document).ready(function() {
   });
   return $('.snippet-expander').click(function() {
     var boxSize, openHeight;
+    if ($('.snippet-expander').hasClass("snippet-reveal")) {
+      if ($('.snippet-expander').hasClass("open-delayed")) {
+        $('.snippet-expander').removeClass("open-delayed");
+      } else {
+        setTimeout((function() {
+          return $('.snippet-expander').addClass("open-delayed");
+        }), 500);
+      }
+    }
     $(this).toggleClass('open');
     $(this).siblings('.snippet-content').toggleClass('open');
     openHeight = $(this).siblings('.snippet-content')[0].scrollHeight + 'px';
