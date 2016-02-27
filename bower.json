@@ -20,6 +20,7 @@
   ],
   "license": "MIT",
   "homepage": "https://github.com/jamiehenson/snippet",
+  "private": false,
   "ignore": [
     "**/.*",
     "node_modules",
