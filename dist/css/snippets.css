@@ -73,24 +73,20 @@
   box-shadow: none;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  opacity: 1;
+  line-height: 0;
+  opacity: 0;
 }
 
 .snippet-box .snippet-reveal.open:after {
   content: attr(data-collapse);
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  opacity: 0;
 }
 
 .snippet-box .snippet-reveal.open-delayed {
-  position: relative;
-  margin: 1em 0;
-}
-
-.snippet-box .snippet-reveal.open-delayed:after {
-  opacity: 1 !important;
-  line-height: initial;
+  opacity: 1;
+  bottom: -1.8em;
+  top: initial;
 }
 
 .snippet-box .snippet-right {

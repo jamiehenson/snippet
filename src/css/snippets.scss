@@ -61,20 +61,17 @@
       background: none;
       box-shadow: none;
       transition: all 0.5s ease;
-      opacity: 1;
       &:after {
         content: attr(data-collapse);
         transition: all 0.5s ease;
-        opacity: 0;
       }
+      line-height: 0;
+      opacity: 0;
     }
     &.open-delayed {
-      position: relative;
-      margin: 1em 0;
-      &:after {
-        opacity: 1 !important;
-        line-height: initial;
-      }
+      opacity: 1;
+      bottom: -1.8em;
+      top: initial;
     }
   }
 
