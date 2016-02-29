@@ -5,9 +5,9 @@
     "Jamie Henson <jhenson47@gmail.com>"
   ],
   "description": "An easy way to glam up your truncated comments/reviews/whatever!",
-  "main": "",
-  "moduleType": [
-    "globals"
+  "main": [
+    "./dist/css/snippet.css",
+    "./dist/js/snippet.js"
   ],
   "keywords": [
     "snippet",
@@ -28,7 +28,8 @@
     "bower_components",
     "test",
     "tests",
-    "example"
+    "example",
+    "src/html"
   ],
   "dependencies": {
     "jquery": "^2.2.1"

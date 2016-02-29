@@ -50,4 +50,4 @@ gulp.task('watch', function() {
   });
 });
 
-gulp.task('default', ['sass', 'coffee', 'jade', 'watch']);
+gulp.task('default', ['sass', 'coffee', 'jade', 'minify-css', 'watch']);
