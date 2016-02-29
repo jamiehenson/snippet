@@ -7,12 +7,12 @@ html(lang="en")
     meta(content="Snippet. Snip it good.", name="description")
     meta(content="Jamie Henson", name="author")
     link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet")
-    link(href="dist/css/snippets.css", rel="stylesheet")
+    link(href="dist/css/snippet.css", rel="stylesheet")
     link(href="example/example.css", rel="stylesheet")
     link(href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css')
     script(src="https://code.jquery.com/jquery-2.2.0.min.js")
     script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
-    script(src="dist/js/snippets.js")
+    script(src="dist/js/snippet.js")
     script(src="example/example.js")
 
   body
@@ -85,9 +85,9 @@ html(lang="en")
           .demo-wrapper
             .well
               .snippet-box
-                .snippet-content
+                .snippet-content(style="max-height: 300px")
                   = text
-                .snippet-expander.snippet-pulldown.snippet-md.snippet-success(data-collapse="less", data-expand="more")
+                .snippet-expander.snippet-reveal.snippet-md.snippet-success(data-collapse="less", data-expand="more")
             hr
             h4 Markup to recreate the above:
             p.code

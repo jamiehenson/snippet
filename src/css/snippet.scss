@@ -19,7 +19,7 @@
     margin: 0;
     padding: 30px 0 10px 0;
     box-shadow: inset 0px -25px 35px -22px grey;
-    transition: box-shadow 0.5s ease;
+    transition: all 0.5s ease;
     &:after {
       content: attr(data-expand);
       color: white;
@@ -32,6 +32,15 @@
     &.open {
       box-shadow: none;
       bottom: -2.8em;
+      &.snippet-xs {
+        bottom: -2.2em;
+      }
+      &.snippet-sm {
+        bottom: -2.4em;
+      }
+      &.snippet-lg {
+        bottom: -3.4em;
+      }
       &:after {
         content: attr(data-collapse);
       }
@@ -47,7 +56,8 @@
     box-shadow: 0px 0px 2px 0px black;
     background: rgba(0,0,0,0.7);
     transition: all 0.5s ease;
-    line-height: 100px;
+    text-overflow: ellipsis;
+
     &:after {
       content: attr(data-expand);
       color: white;
@@ -220,5 +230,9 @@
     &:hover:after {
       background: #ac2925;
     }
+  }
+
+  .initial {
+    line-height: initial !important;
   }
 }

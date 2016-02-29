@@ -22,8 +22,8 @@
   margin: 0;
   padding: 30px 0 10px 0;
   box-shadow: inset 0px -25px 35px -22px grey;
-  -webkit-transition: box-shadow 0.5s ease;
-  transition: box-shadow 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .snippet-box .snippet-pulldown:after {
@@ -41,6 +41,18 @@
   bottom: -2.8em;
 }
 
+.snippet-box .snippet-pulldown.open.snippet-xs {
+  bottom: -2.2em;
+}
+
+.snippet-box .snippet-pulldown.open.snippet-sm {
+  bottom: -2.4em;
+}
+
+.snippet-box .snippet-pulldown.open.snippet-lg {
+  bottom: -3.4em;
+}
+
 .snippet-box .snippet-pulldown.open:after {
   content: attr(data-collapse);
 }
@@ -55,7 +67,7 @@
   background: rgba(0, 0, 0, 0.7);
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  line-height: 100px;
+  text-overflow: ellipsis;
 }
 
 .snippet-box .snippet-reveal:after {
@@ -219,4 +231,8 @@
 
 .snippet-box .snippet-danger:hover:after {
   background: #ac2925;
+}
+
+.snippet-box .initial {
+  line-height: initial !important;
 }

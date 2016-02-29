@@ -6,6 +6,7 @@ var tint = ["tint-dark", "tint-light"];
 
 $(document).ready(function() {
   redoCodebox();
+  initialHeight = $('.snippet-content').css("max-height");
 
   $( "#exampletext" ).keyup(function() {
     $(".snippet-content").text($("#exampletext").val());
@@ -40,6 +41,12 @@ $(document).ready(function() {
         $(".well").css("background-color", "#f5f5f5");
         $(".snippet-box").css("color", "#333");
       }
+    }
+
+    if (variant == "reveal") {
+      $('.snippet-expander').removeClass("initial");
+    } else {
+      $('.snippet-expander').addClass("initial")
     }
 
     $(".snippet-expander").removeClass(excluded.join(" ")).addClass("snippet-" + variant)
