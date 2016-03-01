@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var initialHeight;
   initialHeight = $('.snippet-content').css("max-height");
-  $('.snippet-reveal').not(".open").css("line-height", initialHeight);
+  $('.snippet-reveal').css("line-height", initialHeight);
   $('.snippet-content').each(function() {
     if ($(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10) {
       return $(this).siblings('.snippet-expander').hide();

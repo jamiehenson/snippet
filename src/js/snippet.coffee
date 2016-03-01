@@ -1,6 +1,7 @@
+
 $(document).ready ->
   initialHeight = $('.snippet-content').css("max-height")
-  $('.snippet-reveal').not(".open").css("line-height", initialHeight)
+  $('.snippet-reveal').css("line-height", initialHeight)
 
   $('.snippet-content').each ->
     if $(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10

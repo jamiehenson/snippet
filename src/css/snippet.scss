@@ -3,6 +3,7 @@
   .snippet-content {
     max-height: 100px;
     transition: max-height 0.5s ease;
+    padding: 5px;
     overflow: hidden;
     &.open {
       margin-bottom: 3em;

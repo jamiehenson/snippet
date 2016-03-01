@@ -6,10 +6,9 @@ var tint = ["tint-dark", "tint-light"];
 
 $(document).ready(function() {
   redoCodebox();
-  initialHeight = $('.snippet-content').css("max-height");
 
   $( "#exampletext" ).keyup(function() {
-    $(".snippet-content").text($("#exampletext").val());
+    $(".snippet-content").text($(this).val());
     redoCodebox();
   });
 
@@ -20,6 +19,12 @@ $(document).ready(function() {
 
   $( "#collapse" ).keyup(function() {
     $(".snippet-expander").attr("data-collapse", $(this).val());
+    redoCodebox();
+  });
+
+  $( "#box-height" ).keyup(function() {
+    $(".snippet-content").css("max-height", $(this).val());
+    $('.snippet-reveal').css("line-height", Math.min($(this).val(), (".snippet-content")[0].scrollHeight));
     redoCodebox();
   });
 
@@ -55,8 +60,13 @@ $(document).ready(function() {
 });
 
 function redoCodebox() {
-  $(".codebox").text("<div class=\'" + $(".snippet-expander").attr('class') +
+  $(".codebox").text(
+    "<div class='snippet-box'>" +
+    "\n\t<div class='snippet-content' style='max-height: " + $(".snippet-content").css("max-height") + ";'>...</div>" +
+    "\n\t<div class=\'" + $(".snippet-expander").attr('class') +
     "\' data-expand=\'" + $(".snippet-expander").attr("data-expand") +
     "\' data-collapse=\'" + $(".snippet-expander").attr("data-collapse") +
-    "\'></div>");
+    "\'></div>" +
+    "\n</div>"
+  );
 }

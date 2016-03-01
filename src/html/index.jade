@@ -35,7 +35,7 @@ html(lang="en")
                   textarea#exampletext(rows="5" class="form-control")= text
               .row
                 .col-xs-12
-                  h4 Labels
+                  h4 Content
                 form
                 .col-lg-6
                   .form-group
@@ -45,6 +45,10 @@ html(lang="en")
                   .form-group
                     label(for="collapse") Collapse text
                     input#collapse(type="text" class="form-control" value="less")
+                .col-lg-6
+                  .form-group
+                    label(for="box-height") Height (in px)
+                    input#box-height(type="text" class="form-control" value="300px")
             .col-xs-12
               h4 Style
               .list-group
@@ -100,7 +104,7 @@ html(lang="en")
         code bower install snippet
         |. Alternatively, download the package, and include snippet.css and snippet.js from
         code /dist
-        | in an appropriate place within your project.
+        | in an appropriate place within your project. You're gonna need jQuery for this chap. Bower will take take of this, but if you don't use it then just a head's up.
 
       p Then...
 
@@ -109,7 +113,7 @@ html(lang="en")
 
       pre
         | &lt;div class="snippet-box"&gt;
-        | &nbsp;&nbsp;&lt;div class="snippet-content"&gt;
+        | &nbsp;&nbsp;&lt;div class="snippet-content" style="max-height: CUSTOM-BOX-HEIGHT-VALUE"&gt;
         | &nbsp;&nbsp;&nbsp;&nbsp;CONTENT GOES HERE
         | &nbsp;&nbsp;&lt;/div&gt;
         | &nbsp;&nbsp;&lt;div class="snippet-expander"&gt;&lt;/div&gt;
