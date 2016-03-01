@@ -7,6 +7,10 @@ var tint = ["tint-dark", "tint-light"];
 $(document).ready(function() {
   redoCodebox();
 
+  $.each($(".snippet-expander").attr("class").split(" "), function (index, variant) {
+    $(".demo." + variant.split("snippet-")[1]).addClass("active");
+  });
+
   $( "#exampletext" ).keyup(function() {
     $(".snippet-content").text($(this).val());
     redoCodebox();

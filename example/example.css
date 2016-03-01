@@ -40,8 +40,11 @@ code {
   height: 500px;
 }
 
-.snippet-content {
+.snippet-box {
   color: #333;
+}
+
+.snippet-content {
   font-size: 1.1em;
   line-height: 1.6;
   font-weight: 300;
