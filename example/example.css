@@ -9,13 +9,25 @@ body {
   margin-bottom: 30px;
 }
 
-h1 {
+h1, h2, h4 {
   font-family: "Pacifico", Helvetica;
+}
+
+h1 {
+  text-shadow: 0px 0px 3px black;
   font-size: 4em;
+}
+
+p {
+  font-size: 1.3em;
+  font-weight: 300;
+  line-height: 2;
+  text-shadow: 0px 0px 1px black;
 }
 
 code {
   margin: 0 5px;
+  text-shadow: none;
 }
 
 .container.main {
@@ -28,8 +40,11 @@ code {
   height: 500px;
 }
 
-.snippet-box {
+.snippet-content {
   color: #333;
+  font-size: 1.1em;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 .well {
