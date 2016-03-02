@@ -1,4 +1,3 @@
-
 $(document).ready ->
   initialHeight = $('.snippet-content').css("max-height")
   $('.snippet-reveal').css("line-height", initialHeight)

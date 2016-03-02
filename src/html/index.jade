@@ -18,9 +18,9 @@ html(lang="en")
   body
     .container.main
       .row
-        .col-sm-8
+        .col-xs-6.col-sm-8
           h1 Snippet
-        .col-sm-4.text-right
+        .col-xs-6.col-sm-4.text-right
           a(class="btn btn-lg btn-success github-button" href="https://github.com/jamiehenson/snippet") View on Github
       h3 An easy way to glam up your truncated comments/reviews/whatever!
       hr
@@ -39,11 +39,11 @@ html(lang="en")
                 form
                 .col-lg-6
                   .form-group
-                    label(for="expand") Expand text
+                    label(for="expand") Expand label
                     input#expand(type="text" class="form-control" value="more")
                 .col-lg-6
                   .form-group
-                    label(for="collapse") Collapse text
+                    label(for="collapse") Collapse label
                     input#collapse(type="text" class="form-control" value="less")
                 .col-lg-6
                   .form-group
