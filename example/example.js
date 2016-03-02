@@ -1,11 +1,14 @@
-var style = ["pulldown", "reveal"];
+var style = ["pulldown", "reveal", "shutter-vertical", "shutter-horizontal"];
 var colour = ["text", "default", "primary", "success", "warning", "danger"];
 var size = ["xs", "sm", "md", "lg"];
 var align = ["left", "center", "right", "full"];
-var tint = ["tint-dark", "tint-light"];
+var tint = ["tint-dark", "tint-light", "tint-solid"];
 
 $(document).ready(function() {
   redoCodebox();
+
+  var initialHeight = $('.snippet-content').css("max-height");
+  var initialWidth = $('.snippet-content').css("width");
 
   $.each($(".snippet-expander").attr("class").split(" "), function (index, variant) {
     $(".demo." + variant.split("snippet-")[1]).addClass("active");
@@ -32,6 +35,14 @@ $(document).ready(function() {
     redoCodebox();
   });
 
+  $('.snippet-content').each(function() {
+    if ($(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10) {
+      $(this).siblings('.snippet-expander').hide();
+    }
+    $(this).siblings('.snippet-shutter-vertical').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
+    $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
+  });
+
   $('.demo').click(function() {
     var classes = $(this).attr('class').split(' ')
     var variant = classes.pop();
@@ -42,20 +53,25 @@ $(document).ready(function() {
       return ["snippet-" + value];
     });
 
-    if (type == "tint") {
-      if (variant == "tint-dark") {
-        $(".well").css("background-color", "#333");
-        $(".snippet-box").css("color", "white");
+    if (type == "style") {
+      if (variant == "reveal") {
+        $('.snippet-expander').removeClass("initial");
+        $('.snippet-expander').css("line-height", initialHeight);
       } else {
-        $(".well").css("background-color", "#f5f5f5");
-        $(".snippet-box").css("color", "#333");
+        $('.snippet-expander').addClass("initial")
       }
-    }
 
-    if (variant == "reveal") {
-      $('.snippet-expander').removeClass("initial");
-    } else {
-      $('.snippet-expander').addClass("initial")
+      if (variant == "shutter-vertical") {
+        $('.snippet-expander').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
+      } else {
+        $('.snippet-expander').css("border-width", " 0 " + parseInt(initialWidth) / 2);
+      }
+
+      if (variant == "shutter-horizontal") {
+        $('.snippet-expander').css("padding-top", parseInt(initialHeight) / 2);
+      } else {
+        $('.snippet-expander').css("padding-top", "0px");
+      }
     }
 
     $(".snippet-expander").removeClass(excluded.join(" ")).addClass("snippet-" + variant)

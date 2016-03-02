@@ -54,6 +54,8 @@ html(lang="en")
               .list-group
                 a(class="list-group-item demo style pulldown") Pull-down
                 a(class="list-group-item demo style reveal") Reveal
+                a(class="list-group-item demo style shutter-vertical") Shutter (vertical)
+                a(class="list-group-item demo style shutter-horizontal") Shutter (horizontal)
                 a(class="list-group-item list-group-item-info")
                   em (more coming soon...)
             .col-lg-6
@@ -70,6 +72,7 @@ html(lang="en")
               .list-group
                 a(class="list-group-item demo tint tint-dark") snippet-tint-dark
                 a(class="list-group-item demo tint tint-light") snippet-tint-light
+                a(class="list-group-item demo tint tint-solid") snippet-tint-solid
             .clearfix
             .col-lg-6
               h4 Sizes
@@ -91,7 +94,7 @@ html(lang="en")
               .snippet-box
                 .snippet-content(style="max-height: 300px")
                   = text
-                .snippet-expander.snippet-reveal.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
+                .snippet-expander.snippet-shutter-horizontal.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
             hr
             h4 Markup to recreate the above:
             p.code

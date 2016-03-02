@@ -48,16 +48,13 @@
     }
   }
 
-  .snippet-reveal {
+  .snippet-reveal, .snippet-shutter-vertical, .snippet-shutter-horizontal {
     position: absolute;
     bottom: 0;
     top: 0;
     width: 100%;
     text-align: center;
-    box-shadow: 0px 0px 2px 0px black;
-    background: rgba(0,0,0,0.7);
     transition: all 0.5s ease;
-    text-overflow: ellipsis;
     &:after {
       content: attr(data-expand);
       color: white;
@@ -68,9 +65,16 @@
       font-weight: bold;
     }
     &.open {
+      transition: all 0.5s ease;
+    }
+  }
+
+  .snippet-reveal {
+    box-shadow: 0px 0px 2px 0px black;
+    background: rgba(0,0,0,0.7);
+    &.open {
       background: none;
       box-shadow: none;
-      transition: all 0.5s ease;
       line-height: 0;
       opacity: 0;
     }
@@ -79,6 +83,50 @@
       bottom: -1.8em;
       top: initial;
       &:after {
+        content: attr(data-collapse);
+      }
+    }
+  }
+
+  .snippet-shutter-vertical {
+    border-top: 0px solid rgba(0,0,0,0.7);
+    border-bottom: 0px solid rgba(0,0,0,0.7);
+    transform: rotate(180deg);
+    &:after {
+      transform: rotate(180deg) translateY(50%);
+      display: inline-block;
+    }
+    &.open {
+      border-top-width: 0px !important;
+      border-bottom-width: 0px !important;
+      &:after {
+        margin-top: -2.5em;
+      }
+    }
+  }
+
+  .snippet-shutter-horizontal {
+    border-left: 0px solid rgba(0,0,0,0.7);
+    border-right: 0px solid rgba(0,0,0,0.7);
+    &:after {
+      transition: all 0.5s ease;
+      display: inline-block;
+      transform: translateX(-50%) translateY(-50%);
+    }
+    &.open {
+      border-left-width: 0px !important;
+      border-right-width: 0px !important;
+      &:after {
+        opacity: 0;
+        transition: all 0.5s ease-out;
+        transform: translateX(0);
+      }
+    }
+    &.open-delayed {
+      bottom: -2em;
+      top: initial;
+      &:after {
+        opacity: 1;
         content: attr(data-collapse);
       }
     }
@@ -114,6 +162,10 @@
       box-shadow: 0px 0px 2px 0px white;
       background: rgba(255, 255, 255, 0.7);
     }
+  }
+
+  .snippet-tint-solid {
+    background: #333;
   }
 
   // Configurations
