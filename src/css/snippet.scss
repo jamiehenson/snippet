@@ -55,6 +55,7 @@
     width: 100%;
     text-align: center;
     transition: all 0.5s ease;
+    border-style: solid;
     &:after {
       content: attr(data-expand);
       color: white;
@@ -106,8 +107,6 @@
   }
 
   .snippet-shutter-horizontal {
-    border-left: 0px solid rgba(0,0,0,0.7);
-    border-right: 0px solid rgba(0,0,0,0.7);
     &:after {
       transition: all 0.5s ease;
       display: inline-block;
@@ -126,8 +125,6 @@
   }
 
   .snippet-shutter-vertical {
-    border-top: 0px solid rgba(0,0,0,0.7);
-    border-bottom: 0px solid rgba(0,0,0,0.7);
     transform: rotate(180deg);
     &:after {
       transform: rotate(180deg) translateY(50%);
@@ -158,8 +155,10 @@
       box-shadow: 0px 0px 2px 0px black;
       background: rgba(0, 0, 0, 0.7);
     }
+    &.snippet-shutter-horizontal, &.snippet-shutter-vertical {
+      border-color: rgba(0, 0, 0, 0.7);
+    }
   }
-
   .snippet-tint-light {
     &.snippet-text {
       &:after {
@@ -173,10 +172,17 @@
       box-shadow: 0px 0px 2px 0px white;
       background: rgba(255, 255, 255, 0.7);
     }
+    &.snippet-shutter-horizontal, &.snippet-shutter-vertical {
+      border-color: rgba(255, 255, 255, 0.7);
+    }
   }
-
   .snippet-tint-solid {
-    background: #333;
+    &.snippet-reveal {
+      background: #333;
+    }
+    &.snippet-shutter-horizontal, &.snippet-shutter-vertical {
+      border-color: #333;
+    }
   }
 
   // Configurations
