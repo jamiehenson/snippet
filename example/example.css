@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  background: #67BCDB;
+  background: #2b87eb;
   color: white;
   margin-bottom: 30px;
 }
@@ -31,8 +31,9 @@ code {
 }
 
 .container.main {
-  background: rgba(0,0,0,0.35);
+  background: rgba(0,0,0,0.3);
   border-radius: 0 0 5px 5px;
+  margin-bottom: 2em;
 }
 
 .comment {
@@ -69,6 +70,7 @@ code {
   font-size: 0.9em;
   font-weight: 300;
   text-shadow: 0px 0px 1px black;
+  margin-bottom
 }
 
 .footer a {
