@@ -7,11 +7,14 @@ html(lang="en")
     meta(content="Snippet. Snip it good.", name="description")
     meta(content="Jamie Henson", name="author")
     link(href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-okaidia.min.css" rel='stylesheet')
     link(href="dist/css/snippet.css", rel="stylesheet")
     link(href="example/example.css", rel="stylesheet")
     link(href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css')
     script(src="https://code.jquery.com/jquery-2.2.0.min.js")
     script(src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/components/prism-core.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/components/prism-markup.min.js")
     script(src="dist/js/snippet.js")
     script(src="example/example.js")
 
@@ -27,67 +30,26 @@ html(lang="en")
 
       .row
         .col-xs-4
-          row
+          h4 Example text
+          form
+            .form-group
+              textarea#exampletext(rows="5" class="form-control")= text
+          .row
             .col-xs-12
-              h4 Example text
-              form
-                .form-group
-                  textarea#exampletext(rows="5" class="form-control")= text
-              .row
-                .col-xs-12
-                  h4 Content
-                form
-                .col-lg-6
-                  .form-group
-                    label(for="expand") Expand label
-                    input#expand(type="text" class="form-control" value="more")
-                .col-lg-6
-                  .form-group
-                    label(for="collapse") Collapse label
-                    input#collapse(type="text" class="form-control" value="less")
-                .col-lg-6
-                  .form-group
-                    label(for="box-height") Height (in px)
-                    input#box-height(type="text" class="form-control" value="300px")
-            .col-xs-12
-              h4 Style
-              .list-group
-                a(class="list-group-item demo style pulldown") Pull-down
-                a(class="list-group-item demo style reveal") Reveal
-                a(class="list-group-item demo style shutter-vertical") Shutter (vertical)
-                a(class="list-group-item demo style shutter-horizontal") Shutter (horizontal)
-                a(class="list-group-item list-group-item-info")
-                  em (more coming soon...)
+              h4 Content
+            form
             .col-lg-6
-              h4 Colours
-              .list-group
-                a(class="list-group-item demo colour text") snippet-text
-                a(class="list-group-item demo colour default") snippet-default
-                a(class="list-group-item demo colour primary") snippet-primary
-                a(class="list-group-item demo colour success") snippet-success
-                a(class="list-group-item demo colour warning") snippet-warning
-                a(class="list-group-item demo colour danger") snippet-danger
+              .form-group
+                label(for="expand") Expand label
+                input#expand(type="text" class="form-control" value="more")
             .col-lg-6
-              h4 Tint
-              .list-group
-                a(class="list-group-item demo tint tint-dark") snippet-tint-dark
-                a(class="list-group-item demo tint tint-light") snippet-tint-light
-                a(class="list-group-item demo tint tint-solid") snippet-tint-solid
-            .clearfix
+              .form-group
+                label(for="collapse") Collapse label
+                input#collapse(type="text" class="form-control" value="less")
             .col-lg-6
-              h4 Sizes
-              .list-group
-                a(class="list-group-item demo size xs") snippet-xs
-                a(class="list-group-item demo size sm") snippet-sm
-                a(class="list-group-item demo size md") snippet-md
-                a(class="list-group-item demo size lg") snippet-lg
-            .col-lg-6
-              h4 Alignment
-              .list-group
-                a(class="list-group-item demo align left") snippet-left
-                a(class="list-group-item demo align center") snippet-center
-                a(class="list-group-item demo align right") snippet-right
-                a(class="list-group-item demo align full") snippet-full
+              .form-group
+                label(for="box-height") Height (in px)
+                input#box-height(type="text" class="form-control" value="300px")
         .col-xs-8
           .demo-wrapper
             .well
@@ -95,11 +57,52 @@ html(lang="en")
                 .snippet-content(style="max-height: 300px")
                   = text
                 .snippet-expander.snippet-shutter-vertical.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
-            hr
-            h4 Markup to recreate the above:
-            p.code
-              pre.codebox
-      hr
+      h4 Markup to recreate the above:
+      p.code
+        pre.language-html
+          code.language-html.codebox
+
+      h2 Demo Controls
+      .row
+        .col-xs-6.col-sm-4
+          h4 Style
+          .list-group
+            a(class="list-group-item demo style pulldown") Pull-down
+            a(class="list-group-item demo style reveal") Reveal
+            a(class="list-group-item demo style shutter-vertical") Shutter (vertical)
+            a(class="list-group-item demo style shutter-horizontal") Shutter (horizontal)
+            a(class="list-group-item list-group-item-warning demo style wordcrawl") Wordcrawl (WIP)
+            a(class="list-group-item list-group-item-warning demo style basic") Basic (WIP)
+        .col-xs-6.col-sm-4
+          h4 Colours
+          .list-group
+            a(class="list-group-item demo colour text") snippet-text
+            a(class="list-group-item demo colour default") snippet-default
+            a(class="list-group-item demo colour primary") snippet-primary
+            a(class="list-group-item demo colour success") snippet-success
+            a(class="list-group-item demo colour warning") snippet-warning
+            a(class="list-group-item demo colour danger") snippet-danger
+        .col-xs-6.col-sm-4
+          h4 Tint
+          .list-group
+            a(class="list-group-item demo tint tint-dark") snippet-tint-dark
+            a(class="list-group-item demo tint tint-light") snippet-tint-light
+            a(class="list-group-item demo tint tint-solid") snippet-tint-solid
+        .clearfix
+        .col-xs-6.col-sm-4
+          h4 Sizes
+          .list-group
+            a(class="list-group-item demo size xs") snippet-xs
+            a(class="list-group-item demo size sm") snippet-sm
+            a(class="list-group-item demo size md") snippet-md
+            a(class="list-group-item demo size lg") snippet-lg
+        .col-xs-6.col-sm-4
+          h4 Alignment
+          .list-group
+            a(class="list-group-item demo align left") snippet-left
+            a(class="list-group-item demo align center") snippet-center
+            a(class="list-group-item demo align right") snippet-right
+            a(class="list-group-item demo align full") snippet-full
 
       h2 Installation
       p
@@ -114,13 +117,14 @@ html(lang="en")
       h2 Basic markup
       p It's very easy to set up one of these boxes. Just include <strong>snippets.css</strong> (or the supplied SASS version) and <strong>snippets.js</strong> in your page, and then whack down the following markup:
 
-      pre
-        | &lt;div class="snippet-box"&gt;
-        | &nbsp;&nbsp;&lt;div class="snippet-content" style="max-height: CUSTOM-BOX-HEIGHT-VALUE"&gt;
-        | &nbsp;&nbsp;&nbsp;&nbsp;CONTENT GOES HERE
-        | &nbsp;&nbsp;&lt;/div&gt;
-        | &nbsp;&nbsp;&lt;div class="snippet-expander"&gt;&lt;/div&gt;
-        | &lt;/div&gt;
+      pre.language-html
+        code.language-html
+          | &lt;div class="snippet-box"&gt;
+          | &nbsp;&nbsp;&lt;div class="snippet-content" style="max-height: CUSTOM-BOX-HEIGHT-VALUE"&gt;
+          | &nbsp;&nbsp;&nbsp;&nbsp;CONTENT GOES HERE
+          | &nbsp;&nbsp;&lt;/div&gt;
+          | &nbsp;&nbsp;&lt;div class="snippet-expander"&gt;&lt;/div&gt;
+          | &lt;/div&gt;
 
       p
         | Append whatever styling classes you like to the

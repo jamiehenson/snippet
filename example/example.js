@@ -1,4 +1,4 @@
-var style = ["pulldown", "reveal", "shutter-vertical", "shutter-horizontal"];
+var style = ["pulldown", "reveal", "shutter-vertical", "shutter-horizontal", "wordcrawl", "basic"];
 var colour = ["text", "default", "primary", "success", "warning", "danger"];
 var size = ["xs", "sm", "md", "lg"];
 var align = ["left", "center", "right", "full"];
@@ -54,7 +54,6 @@ $(document).ready(function() {
     });
 
     if (type == "style") {
-
       if (variant == "reveal") {
         $('.snippet-expander').css("line-height", initialHeight);
       } else if (variant == "shutter-horizontal") {

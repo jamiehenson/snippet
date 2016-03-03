@@ -96,6 +96,7 @@
   .snippet-reveal {
     box-shadow: 0px 0px 2px 0px black;
     background: rgba(0,0,0,0.7);
+    border: 0;
     &.open {
       background: none;
       box-shadow: none;
