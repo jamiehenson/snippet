@@ -9,25 +9,31 @@ $(document).ready(function() {
     }
     $(this).siblings('.snippet-shutter-vertical').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
     $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
-    return $(this).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
+    $(this).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
+    return $(this).siblings('.snippet-expander').addClass("closed-fully");
   });
   return $('.snippet-expander').click(function() {
     var boxSize, element, openHeight;
-    $(this).toggleClass('open');
-    $(this).siblings('.snippet-content').toggleClass('open');
+    if ($(this).hasClass('open')) {
+      $(this).removeClass('open').removeClass("open-fully").addClass('closed');
+      $(this).siblings('.snippet-content').addClass('closed').removeClass('open');
+      element = $(this);
+      setTimeout((function() {
+        return element.addClass("closed-fully");
+      }), 500);
+    } else {
+      $(this).removeClass('closed').removeClass("closed-fully").addClass('open');
+      $(this).siblings('.snippet-content').addClass('open').removeClass('closed');
+      element = $(this);
+      setTimeout((function() {
+        return element.addClass("open-fully");
+      }), 500);
+    }
     openHeight = $(this).siblings('.snippet-content')[0].scrollHeight + 'px';
     boxSize = $(this).hasClass('open') ? openHeight : initialHeight;
     $(this).siblings('.snippet-content').css('max-height', boxSize);
     if ($(this).hasClass("snippet-reveal") || $(this).hasClass("snippet-shutter-horizontal")) {
-      $(this).toggleClass("initial");
-      if ($(this).hasClass("open-delayed")) {
-        return $(this).removeClass("open-delayed");
-      } else {
-        element = $(this);
-        return setTimeout((function() {
-          return element.addClass("open-delayed");
-        }), 500);
-      }
+      return $(this).toggleClass("initial");
     }
   });
 });

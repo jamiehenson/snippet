@@ -64,8 +64,31 @@
       font-size: 0.7em;
       font-weight: bold;
     }
-    &.open {
+    &.open, &.closed, &.open &:after, &.closed &:after {
       transition: all 0.5s ease;
+    }
+  }
+
+  .snippet-reveal, .snippet-shutter-horizontal {
+    &.open {
+      opacity: 0;
+    }
+    &.open-fully {
+      top: initial;
+      opacity: 1;
+      &:after {
+        content: attr(data-collapse);
+      }
+    }
+    &.closed {
+      &:after {
+        opacity: 0;
+      }
+    }
+    &.closed-fully {
+      &:after {
+        opacity: 1;
+      }
     }
   }
 
@@ -76,32 +99,9 @@
       background: none;
       box-shadow: none;
       line-height: 0;
-      opacity: 0;
     }
-    &.open-delayed {
-      opacity: 1;
+    &.open-fully {
       bottom: -1.8em;
-      top: initial;
-      &:after {
-        content: attr(data-collapse);
-      }
-    }
-  }
-
-  .snippet-shutter-vertical {
-    border-top: 0px solid rgba(0,0,0,0.7);
-    border-bottom: 0px solid rgba(0,0,0,0.7);
-    transform: rotate(180deg);
-    &:after {
-      transform: rotate(180deg) translateY(50%);
-      display: inline-block;
-    }
-    &.open {
-      border-top-width: 0px !important;
-      border-bottom-width: 0px !important;
-      &:after {
-        margin-top: -2.5em;
-      }
     }
   }
 
@@ -117,17 +117,28 @@
       border-left-width: 0px !important;
       border-right-width: 0px !important;
       &:after {
-        opacity: 0;
-        transition: all 0.5s ease-out;
         transform: translateX(0);
       }
     }
-    &.open-delayed {
-      bottom: -2em;
-      top: initial;
+    &.open-fully {
+      bottom: -2.25em;
+    }
+  }
+
+  .snippet-shutter-vertical {
+    border-top: 0px solid rgba(0,0,0,0.7);
+    border-bottom: 0px solid rgba(0,0,0,0.7);
+    transform: rotate(180deg);
+    &:after {
+      transform: rotate(180deg) translateY(50%);
+      display: inline-block;
+    }
+    &.open {
+      border-top-width: 0px !important;
+      border-bottom-width: 0px !important;
       &:after {
-        opacity: 1;
         content: attr(data-collapse);
+        margin-top: -1.5em;
       }
     }
   }

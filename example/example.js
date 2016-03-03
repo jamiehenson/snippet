@@ -54,9 +54,15 @@ $(document).ready(function() {
     });
 
     if (type == "style") {
+
+      if (variant == "reveal") {
+        $('.snippet-expander').css("line-height", initialHeight);
+      } else if (variant == "shutter-horizontal") {
+        $('.snippet-expander').css("line-height", "initial");
+      }
+
       if (variant == "reveal") {
         $('.snippet-expander').removeClass("initial");
-        $('.snippet-expander').css("line-height", initialHeight);
       } else {
         $('.snippet-expander').addClass("initial")
       }
