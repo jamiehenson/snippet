@@ -1,0 +1,42 @@
+{
+  "name": "snippet-box",
+  "description": "An easy way to glam up your truncated comments/reviews/whatever!",
+  "version": "0.2.0",
+  "main": "Gulpfile.js",
+  "directories": {
+    "example": "example"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-sass": "latest",
+    "gulp-autoprefixer": "latest",
+    "gulp-jade": "latest",
+    "gulp-coffee": "latest",
+    "gulp-util": "latest",
+    "gulp-clean-css": "latest",
+    "gulp-rename": "latest"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamiehenson/snippet.git"
+  },
+  "keywords": [
+    "snippet",
+    "review",
+    "comment",
+    "expand",
+    "contract",
+    "read",
+    "more",
+    "bootstrap"
+  ],
+  "author": "Jamie Henson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamiehenson/snippet/issues"
+  },
+  "homepage": "https://github.com/jamiehenson/snippet#readme"
+}
