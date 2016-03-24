@@ -50,13 +50,17 @@ html(lang="en")
               .form-group
                 label(for="box-height") Height (in px)
                 input#box-height(type="text" class="form-control" value="300px")
+            .col-lg-6
+              .form-group
+                label(for="length") Truncated length
+                input#length(type="text" class="form-control" value="50")
         .col-xs-8
           .demo-wrapper
             .well
               .snippet-box
                 .snippet-content(style="max-height: 300px")
                   = text
-                .snippet-expander.snippet-shutter-vertical.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
+                .snippet-expander.snippet-inline.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more", data-length="50")
       h4 Markup to recreate the above:
       p.code
         pre.language-html
@@ -71,8 +75,8 @@ html(lang="en")
             a(class="list-group-item demo style reveal") Reveal
             a(class="list-group-item demo style shutter-vertical") Shutter (vertical)
             a(class="list-group-item demo style shutter-horizontal") Shutter (horizontal)
-            a(class="list-group-item list-group-item-warning demo style wordcrawl") Wordcrawl (WIP)
-            a(class="list-group-item list-group-item-warning demo style basic") Basic (WIP)
+            a(class="list-group-item list-group-item-warning demo style inline") Inline
+            a(class="list-group-item list-group-item-warning demo style inline-animated") Inline (animated)
         .col-xs-6.col-sm-4
           h4 Colours
           .list-group

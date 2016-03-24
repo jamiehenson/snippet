@@ -35,6 +35,11 @@ $(document).ready(function() {
     redoCodebox();
   });
 
+  $( "#length" ).keyup(function() {
+    $(".snippet-expander").attr("data-length", $(this).val());
+    redoCodebox();
+  });
+
   $('.snippet-content').each(function() {
     if ($(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10) {
       $(this).siblings('.snippet-expander').hide();
@@ -91,6 +96,7 @@ function redoCodebox() {
     "\n\t<div class=\'" + $(".snippet-expander").attr('class') +
     "\' data-expand=\'" + $(".snippet-expander").attr("data-expand") +
     "\' data-collapse=\'" + $(".snippet-expander").attr("data-collapse") +
+    "\' data-length=\'" + $(".snippet-expander").attr("data-length") +
     "\'></div>" +
     "\n</div>"
   );
