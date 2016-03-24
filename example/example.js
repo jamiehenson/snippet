@@ -53,6 +53,18 @@ $(document).ready(function() {
     $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
   });
 
+  if ($(".snippet-expander").hasClass("snippet-inline") || $(".snippet-expander").hasClass("snippet-inline-animated")) {
+    $(".alignment-group").hide();
+    $(".colour-group").hide();
+    $(".size-group").hide();
+    $(".tint-group").hide();
+  } else {
+    $(".alignment-group").show();
+    $(".colour-group").show();
+    $(".size-group").show();
+    $(".tint-group").show();
+  }
+
   $('.demo').click(function() {
     var classes = $(this).attr('class').split(' ')
     var variant = classes.pop();
