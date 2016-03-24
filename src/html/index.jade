@@ -54,13 +54,17 @@ html(lang="en")
               .form-group
                 label(for="length") Truncated length
                 input#length(type="text" class="form-control" value="50")
+            .col-lg-6
+              .form-group
+                label(for="length") Speed (for animated inline)
+                input#speed(type="text" class="form-control" value="20")
         .col-xs-8
           .demo-wrapper
             .well
               .snippet-box
                 .snippet-content(style="max-height: 300px")
                   = text
-                .snippet-expander.snippet-inline.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more", data-length="50")
+                .snippet-expander.snippet-inline-animated.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more", data-length="50", data-speed="20")
       h4 Markup to recreate the above:
       p.code
         pre.language-html
@@ -68,16 +72,16 @@ html(lang="en")
 
       h2 Demo Controls
       .row
-        .col-xs-6.col-sm-4
+        .style-group.col-xs-6.col-sm-4
           h4 Style
           .list-group
             a(class="list-group-item demo style pulldown") Pull-down
             a(class="list-group-item demo style reveal") Reveal
             a(class="list-group-item demo style shutter-vertical") Shutter (vertical)
             a(class="list-group-item demo style shutter-horizontal") Shutter (horizontal)
-            a(class="list-group-item list-group-item-warning demo style inline") Inline
-            a(class="list-group-item list-group-item-warning demo style inline-animated") Inline (animated)
-        .col-xs-6.col-sm-4
+            a(class="list-group-item demo style inline") Inline
+            a(class="list-group-item demo style inline-animated") Inline (animated)
+        .colour-group.col-xs-6.col-sm-4
           h4 Colours
           .list-group
             a(class="list-group-item demo colour text") snippet-text
@@ -86,21 +90,21 @@ html(lang="en")
             a(class="list-group-item demo colour success") snippet-success
             a(class="list-group-item demo colour warning") snippet-warning
             a(class="list-group-item demo colour danger") snippet-danger
-        .col-xs-6.col-sm-4
+        .tint-group.col-xs-6.col-sm-4
           h4 Tint
           .list-group
             a(class="list-group-item demo tint tint-dark") snippet-tint-dark
             a(class="list-group-item demo tint tint-light") snippet-tint-light
             a(class="list-group-item demo tint tint-solid") snippet-tint-solid
         .clearfix
-        .col-xs-6.col-sm-4
+        .size-group.col-xs-6.col-sm-4
           h4 Sizes
           .list-group
             a(class="list-group-item demo size xs") snippet-xs
             a(class="list-group-item demo size sm") snippet-sm
             a(class="list-group-item demo size md") snippet-md
             a(class="list-group-item demo size lg") snippet-lg
-        .col-xs-6.col-sm-4
+        .alignment-group.col-xs-6.col-sm-4
           h4 Alignment
           .list-group
             a(class="list-group-item demo align left") snippet-left

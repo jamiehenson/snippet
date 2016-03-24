@@ -1,11 +1,12 @@
-var truncateContent;
+var appendCollapser, appendExpander, feedWords, feedWordsReverse, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
+
+textContents = [];
 
 $(document).ready(function() {
-  var initialHeight, initialWidth, textContents;
+  var initialHeight, initialWidth;
   initialHeight = $('.snippet-content').css("max-height");
   initialWidth = $('.snippet-content').css("width");
   $('.snippet-reveal').css("line-height", initialHeight);
-  textContents = [];
   $('.snippet-content').each(function(index, element) {
     var expander;
     $(element).data("index", index);
@@ -17,10 +18,10 @@ $(document).ready(function() {
     $(element).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
     $(element).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
     expander.addClass("closed-fully");
-    if (expander.hasClass('snippet-inline')) {
+    if (expander.hasClass('snippet-inline') || expander.hasClass('snippet-inline-animated')) {
       $(this).css("max-height", "initial");
       textContents.push($(this).text());
-      return truncateContent(this);
+      return manipulateContent(this);
     }
   });
   $('.snippet-expander').click(function() {
@@ -48,23 +49,90 @@ $(document).ready(function() {
     }
   });
   $(document).on("click", ".snippet-inline-collapser", function() {
-    return truncateContent($(this).parent());
+    if ($(this).parent().siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+      return manipulateContent($(this).parent(), true);
+    } else {
+      return manipulateContent($(this).parent());
+    }
   });
   return $(document).on("click", ".snippet-inline-expander", function() {
-    var content, index, lessText;
-    content = $(this).parent().text();
-    index = $(this).parent().data("index");
-    lessText = $(this).parent().siblings(".snippet-expander").data("collapse");
-    $(this).parent().text(textContents[index]).append("<span class='snippet-inline-collapser'> <a>(" + lessText + ")</a></span>");
-    return $(this).remove();
+    if ($(this).parent().siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+      return manipulateContent($(this).parent(), true, true);
+    } else {
+      return manipulateContent($(this).parent(), false, true);
+    }
   });
 });
 
-truncateContent = function(element) {
-  var content, moreText, redacted, truncationLength;
+manipulateContent = function(element, animated, expand) {
+  var content, index, lessText, moreText, speed, truncationLength;
   content = $(element).text();
-  truncationLength = $(element).siblings('.snippet-expander').data("length") || 20;
-  moreText = $(element).siblings('.snippet-expander').data("expand");
-  redacted = content.split(" ").slice(0, +truncationLength + 1 || 9e9).join(" ");
-  return $(element).text(redacted).append("<span class='snippet-inline-expander'>... <a>(" + moreText + ")</a></span>");
+  index = $(element).data("index");
+  moreText = $(element).siblings('.snippet-expander').data("expand") || "asdas";
+  lessText = $(element).siblings(".snippet-expander").data("collapse") || "less";
+  truncationLength = $(element).siblings('.snippet-expander').data("length") || 50;
+  speed = $(element).siblings('.snippet-expander').data("speed") || 20;
+  if (animated && expand) {
+    removeExpander(element);
+    return feedWords(element, truncationLength, textContents[index].split(" "), lessText, speed);
+  } else if (expand) {
+    removeExpander(element);
+    $(element).text(textContents[index]);
+    return appendCollapser(element, lessText);
+  } else if (animated) {
+    removeCollapser(element);
+    return feedWordsReverse(element, truncationLength, moreText, speed, index);
+  } else {
+    removeCollapser(element);
+    return truncateContent(element, truncationLength, moreText, index);
+  }
+};
+
+feedWords = function(element, offset, words, label, speed) {
+  if (offset >= words.length - 1) {
+    appendCollapser(element, label);
+    return;
+  }
+  return setTimeout((function() {
+    $(element).append(" " + words.slice(offset + 1, +(offset + speed) + 1 || 9e9).join(" "));
+    return feedWords(element, offset + speed, words, label, speed);
+  }), 1);
+};
+
+feedWordsReverse = function(element, limit, label, speed, index) {
+  var words;
+  words = $(element).text().split(" ");
+  if (words.length <= limit) {
+    truncateContent(element, limit, label, index);
+    return;
+  }
+  return setTimeout((function() {
+    var reduced;
+    reduced = words.slice(0, +(-speed) + 1 || 9e9).join(" ");
+    $(element).text(reduced);
+    return feedWordsReverse(element, limit, label, speed, index);
+  }), 1);
+};
+
+truncateContent = function(element, truncationLength, label, index) {
+  var content;
+  content = $(element).text();
+  $(element).text(textContents[index].split(" ").slice(0, +truncationLength + 1 || 9e9).join(" "));
+  return appendExpander(element, label);
+};
+
+appendExpander = function(element, label) {
+  return $(element).append("<span class='snippet-inline-expander'>... <a>(" + label + ")</a></span>");
+};
+
+appendCollapser = function(element, label) {
+  return $(element).append("<span class='snippet-inline-collapser'> <a>(" + label + ")</a></span>");
+};
+
+removeExpander = function(element) {
+  return $(element).find(".snippet-inline-expander").remove();
+};
+
+removeCollapser = function(element) {
+  return $(element).find(".snippet-inline-collapser").remove();
 };

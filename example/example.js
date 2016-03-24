@@ -1,4 +1,4 @@
-var style = ["pulldown", "reveal", "shutter-vertical", "shutter-horizontal", "wordcrawl", "basic"];
+var style = ["pulldown", "reveal", "shutter-vertical", "shutter-horizontal", "inline", "inline-animated"];
 var colour = ["text", "default", "primary", "success", "warning", "danger"];
 var size = ["xs", "sm", "md", "lg"];
 var align = ["left", "center", "right", "full"];
@@ -37,6 +37,11 @@ $(document).ready(function() {
 
   $( "#length" ).keyup(function() {
     $(".snippet-expander").attr("data-length", $(this).val());
+    redoCodebox();
+  });
+
+  $( "#speed" ).keyup(function() {
+    $(".snippet-expander").attr("data-speed", $(this).val());
     redoCodebox();
   });
 
@@ -82,6 +87,18 @@ $(document).ready(function() {
       } else {
         $('.snippet-expander').css("padding-top", "0px");
       }
+
+      if (variant == "inline" || variant == "inline-animated") {
+        $(".alignment-group").hide();
+        $(".colour-group").hide();
+        $(".size-group").hide();
+        $(".tint-group").hide();
+      } else {
+        $(".alignment-group").show();
+        $(".colour-group").show();
+        $(".size-group").show();
+        $(".tint-group").show();
+      }
     }
 
     $(".snippet-expander").removeClass(excluded.join(" ")).addClass("snippet-" + variant)
@@ -97,6 +114,7 @@ function redoCodebox() {
     "\' data-expand=\'" + $(".snippet-expander").attr("data-expand") +
     "\' data-collapse=\'" + $(".snippet-expander").attr("data-collapse") +
     "\' data-length=\'" + $(".snippet-expander").attr("data-length") +
+    "\' data-speed=\'" + $(".snippet-expander").attr("data-speed") +
     "\'></div>" +
     "\n</div>"
   );
