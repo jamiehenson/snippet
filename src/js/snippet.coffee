@@ -60,6 +60,8 @@ manipulateContent = (element, animated, expand) ->
   truncationLength = $(element).siblings('.snippet-expander').data("length") || 50
   speed = $(element).siblings('.snippet-expander').data("speed") || 20
 
+  return if content.split(" ").length <= truncationLength
+
   if animated and expand
     removeExpander(element)
     feedWords(element, truncationLength, textContents[index].split(" "), lessText, speed)

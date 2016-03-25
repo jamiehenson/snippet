@@ -75,6 +75,9 @@ manipulateContent = function(element, animated, expand) {
   lessText = $(element).siblings(".snippet-expander").data("collapse") || "less";
   truncationLength = $(element).siblings('.snippet-expander').data("length") || 50;
   speed = $(element).siblings('.snippet-expander').data("speed") || 20;
+  if (content.split(" ").length <= truncationLength) {
+    return;
+  }
   if (animated && expand) {
     removeExpander(element);
     return feedWords(element, truncationLength, textContents[index].split(" "), lessText, speed);
