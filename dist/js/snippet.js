@@ -3,25 +3,28 @@ var appendCollapser, appendExpander, feedWords, feedWordsReverse, manipulateCont
 textContents = [];
 
 $(document).ready(function() {
-  var initialHeight, initialWidth;
+  var initialHeight, initialWidth, inlineCount;
   initialHeight = $('.snippet-content').css("max-height");
   initialWidth = $('.snippet-content').css("width");
   $('.snippet-reveal').css("line-height", initialHeight);
-  $('.snippet-content').each(function(index, element) {
+  inlineCount = 0;
+  $('.snippet-content').each(function() {
     var expander;
-    $(element).data("index", index);
     expander = $(this).siblings('.snippet-expander');
-    if ($(element)[0].scrollHeight <= parseInt($(element).css('max-height')) + 10) {
-      expander.hide();
-    }
-    $(element).siblings('.snippet-shutter-vertical').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
-    $(element).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
-    $(element).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
-    expander.addClass("closed-fully");
     if (expander.hasClass('snippet-inline') || expander.hasClass('snippet-inline-animated')) {
+      $(this).data("index", inlineCount);
+      inlineCount++;
       $(this).css("max-height", "initial");
       textContents.push($(this).text());
       return manipulateContent(this);
+    } else {
+      if ($(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10) {
+        expander.hide();
+      }
+      $(this).siblings('.snippet-shutter-vertical').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
+      $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
+      $(this).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
+      return expander.addClass("closed-fully");
     }
   });
   $('.snippet-expander').click(function() {
@@ -68,7 +71,7 @@ manipulateContent = function(element, animated, expand) {
   var content, index, lessText, moreText, speed, truncationLength;
   content = $(element).text();
   index = $(element).data("index");
-  moreText = $(element).siblings('.snippet-expander').data("expand") || "asdas";
+  moreText = $(element).siblings('.snippet-expander').data("expand") || "more";
   lessText = $(element).siblings(".snippet-expander").data("collapse") || "less";
   truncationLength = $(element).siblings('.snippet-expander').data("length") || 50;
   speed = $(element).siblings('.snippet-expander').data("speed") || 20;
@@ -115,8 +118,6 @@ feedWordsReverse = function(element, limit, label, speed, index) {
 };
 
 truncateContent = function(element, truncationLength, label, index) {
-  var content;
-  content = $(element).text();
   $(element).text(textContents[index].split(" ").slice(0, +truncationLength + 1 || 9e9).join(" "));
   return appendExpander(element, label);
 };

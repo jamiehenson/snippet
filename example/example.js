@@ -53,18 +53,6 @@ $(document).ready(function() {
     $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
   });
 
-  if ($(".snippet-expander").hasClass("snippet-inline") || $(".snippet-expander").hasClass("snippet-inline-animated")) {
-    $(".alignment-group").hide();
-    $(".colour-group").hide();
-    $(".size-group").hide();
-    $(".tint-group").hide();
-  } else {
-    $(".alignment-group").show();
-    $(".colour-group").show();
-    $(".size-group").show();
-    $(".tint-group").show();
-  }
-
   $('.demo').click(function() {
     var classes = $(this).attr('class').split(' ')
     var variant = classes.pop();
@@ -101,15 +89,27 @@ $(document).ready(function() {
       }
 
       if (variant == "inline" || variant == "inline-animated") {
+        $(".demo-wrapper-inline").show();
+        $(".demo-wrapper").hide();
+        $(".style-group").addClass("col-xs-12").removeClass("col-xs-6").removeClass("col-sm-4")
         $(".alignment-group").hide();
         $(".colour-group").hide();
         $(".size-group").hide();
         $(".tint-group").hide();
+        $(".height-field").hide();
+        $(".length-field").show();
+        $(".speed-field").show();
       } else {
+        $(".demo-wrapper").show();
+        $(".demo-wrapper-inline").hide();
+        $(".style-group").addClass("col-xs-6").addClass("col-sm-4").removeClass("col-xs-12")
         $(".alignment-group").show();
         $(".colour-group").show();
         $(".size-group").show();
         $(".tint-group").show();
+        $(".height-field").show();
+        $(".length-field").hide();
+        $(".speed-field").hide();
       }
     }
 

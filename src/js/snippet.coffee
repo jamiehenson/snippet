@@ -4,21 +4,22 @@ $(document).ready ->
   initialHeight = $('.snippet-content').css("max-height")
   initialWidth = $('.snippet-content').css("width")
   $('.snippet-reveal').css("line-height", initialHeight)
+  inlineCount = 0
 
-  $('.snippet-content').each (index, element) ->
-    $(element).data("index", index)
+  $('.snippet-content').each ->
     expander = $(this).siblings('.snippet-expander')
-    if $(element)[0].scrollHeight <= parseInt($(element).css('max-height')) + 10
-      expander.hide()
-    $(element).siblings('.snippet-shutter-vertical').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
-    $(element).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
-    $(element).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
-    expander.addClass "closed-fully"
-
     if expander.hasClass('snippet-inline') || expander.hasClass('snippet-inline-animated')
+      $(this).data("index", inlineCount)
+      inlineCount++
       $(this).css("max-height", "initial")
       textContents.push $(this).text()
       manipulateContent(this)
+    else
+      expander.hide() if $(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10
+      $(this).siblings('.snippet-shutter-vertical').css("border-width", parseInt(initialHeight) / 2 + " 0 ");
+      $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
+      $(this).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
+      expander.addClass "closed-fully"
 
   $('.snippet-expander').click ->
     if $(this).hasClass 'open'
@@ -54,7 +55,7 @@ $(document).ready ->
 manipulateContent = (element, animated, expand) ->
   content = $(element).text()
   index = $(element).data("index")
-  moreText = $(element).siblings('.snippet-expander').data("expand") || "asdas"
+  moreText = $(element).siblings('.snippet-expander').data("expand") || "more"
   lessText = $(element).siblings(".snippet-expander").data("collapse") || "less"
   truncationLength = $(element).siblings('.snippet-expander').data("length") || 50
   speed = $(element).siblings('.snippet-expander').data("speed") || 20
@@ -94,7 +95,6 @@ feedWordsReverse = (element, limit, label, speed, index) ->
   ), 1
 
 truncateContent = (element, truncationLength, label, index) ->
-  content = $(element).text()
   $(element).text(textContents[index].split(" ")[0..truncationLength].join(" "))
   appendExpander(element, label)
 

@@ -19,7 +19,7 @@ html(lang="en")
     script(src="example/example.js")
 
   body
-    .container.main
+    .container-fluid.main
       .row
         .col-xs-6.col-sm-8
           h1 Snippet
@@ -46,15 +46,15 @@ html(lang="en")
               .form-group
                 label(for="collapse") Collapse label
                 input#collapse(type="text" class="form-control" value="less")
-            .col-lg-6
+            .height-field.col-lg-6
               .form-group
                 label(for="box-height") Height (in px)
-                input#box-height(type="text" class="form-control" value="300px")
-            .col-lg-6
+                input#box-height(type="text" class="form-control" value="150px")
+            .length-field.col-lg-6(style="display: none;")
               .form-group
                 label(for="length") Truncated length
                 input#length(type="text" class="form-control" value="50")
-            .col-lg-6
+            .speed-field.col-lg-6(style="display: none;")
               .form-group
                 label(for="length") Speed (for animated inline)
                 input#speed(type="text" class="form-control" value="20")
@@ -62,9 +62,16 @@ html(lang="en")
           .demo-wrapper
             .well
               .snippet-box
-                .snippet-content(style="max-height: 300px")
+                .snippet-content(style="max-height: 150px")
                   = text
-                .snippet-expander.snippet-inline-animated.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more", data-length="50", data-speed="20")
+                .snippet-expander.snippet-pulldown.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
+          .demo-wrapper-inline(style="display: none")
+            .well
+              .snippet-box
+                .snippet-content
+                  = text
+                .snippet-expander.snippet-inline-animated(data-collapse="less", data-expand="more", data-length="50", data-speed="20")
+            
       h4 Markup to recreate the above:
       p.code
         pre.language-html
