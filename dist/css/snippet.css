@@ -164,6 +164,10 @@
   margin-top: -1.5em;
 }
 
+.snippet-box .snippet-inline-expander, .snippet-box .snippet-inline-collapser {
+  cursor: pointer;
+}
+
 .snippet-box .snippet-tint-dark.open, .snippet-box .snippet-tint-light.open {
   background: none !important;
   box-shadow: none !important;
