@@ -29,9 +29,9 @@ It's very easy to set up one of these boxes. Just include snippet.css (or the su
 </div>
 ```
   
-Append whatever styling classes and data attributes you like to the *snippet-expander* element. More information on that below.
+Append whatever styling classes and data attributes you like to the *snippet-expander* element. Additionally, you can always style the key divs however you like with your own CSS. More information on the provided stuff below:
 
-### Options (with classes)
+### Classes
 #### Styles
 - snippet-pulldown
 - snippet-reveal
@@ -73,4 +73,3 @@ Append whatever styling classes and data attributes you like to the *snippet-exp
 
 ### Dependencies
 Snippet needs jQuery to run. Bower will pull down at least version 2.2.1, but this version isn't a hard requirement.
-
