@@ -115,10 +115,12 @@
   background: none;
   box-shadow: none;
   line-height: 0;
+  opacity: 0;
 }
 
 .snippet-box .snippet-reveal.open-fully {
-  bottom: -1.8em;
+  bottom: -6.8em;
+  opacity: 1;
 }
 
 .snippet-box .snippet-shutter-horizontal:after {

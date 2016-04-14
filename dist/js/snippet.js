@@ -47,7 +47,7 @@ $(document).ready(function() {
     openHeight = $(this).siblings('.snippet-content')[0].scrollHeight + 'px';
     boxSize = $(this).hasClass('open') ? openHeight : initialHeight;
     $(this).siblings('.snippet-content').css('max-height', boxSize);
-    if ($(this).hasClass("snippet-reveal") || $(this).hasClass("snippet-shutter-horizontal")) {
+    if ($(this).hasClass("snippet-shutter-horizontal")) {
       return $(this).toggleClass("initial");
     }
   });
@@ -71,10 +71,10 @@ manipulateContent = function(element, animated, expand) {
   var content, index, lessText, moreText, speed, truncationLength;
   content = $(element).text();
   index = $(element).data("index");
-  moreText = $(element).siblings('.snippet-expander').data("expand") || "more";
-  lessText = $(element).siblings(".snippet-expander").data("collapse") || "less";
-  truncationLength = $(element).siblings('.snippet-expander').data("length") || 50;
-  speed = $(element).siblings('.snippet-expander').data("speed") || 20;
+  moreText = $(element).siblings('.snippet-expander').attr("data-expand") || "more";
+  lessText = $(element).siblings(".snippet-expander").attr("data-collapse") || "less";
+  truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50;
+  speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20;
   if (content.split(" ").length <= truncationLength) {
     return;
   }

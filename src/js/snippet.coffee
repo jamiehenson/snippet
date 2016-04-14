@@ -37,7 +37,7 @@ $(document).ready ->
     boxSize = if $(this).hasClass('open') then openHeight else initialHeight
     $(this).siblings('.snippet-content').css 'max-height', boxSize
 
-    if $(this).hasClass("snippet-reveal") || $(this).hasClass("snippet-shutter-horizontal")
+    if $(this).hasClass("snippet-shutter-horizontal")
       $(this).toggleClass "initial"
 
   $(document).on "click", ".snippet-inline-collapser", ->
@@ -55,10 +55,10 @@ $(document).ready ->
 manipulateContent = (element, animated, expand) ->
   content = $(element).text()
   index = $(element).data("index")
-  moreText = $(element).siblings('.snippet-expander').data("expand") || "more"
-  lessText = $(element).siblings(".snippet-expander").data("collapse") || "less"
-  truncationLength = $(element).siblings('.snippet-expander').data("length") || 50
-  speed = $(element).siblings('.snippet-expander').data("speed") || 20
+  moreText = $(element).siblings('.snippet-expander').attr("data-expand") || "more"
+  lessText = $(element).siblings(".snippet-expander").attr("data-collapse") || "less"
+  truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50
+  speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20
 
   return if content.split(" ").length <= truncationLength
 
