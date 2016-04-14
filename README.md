@@ -74,3 +74,6 @@ Append whatever styling classes and data attributes you like to the *snippet-exp
 
 ### Dependencies
 Snippet needs jQuery to run. Bower will pull down at least version 2.2.1, but this version isn't a hard requirement.
+
+### Feedback
+This is quite a young project so any contributions or bits of feedback are certainly welcome!
