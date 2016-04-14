@@ -18,7 +18,7 @@ Alternatively, download the latest release from here, and include snippet.css an
 
 ### Usage
 
-It's very easy to set up one of these boxes. Just include snippet.css (or the supplied SASS version) and snippet.js in your page, and then use the following markup:
+It's very easy to set up one of these boxes. Just include snippet.css (or the supplied SASS version) and snippet.js (or the CoffeeScript version) in your page, and then use the following markup:
 
 ```
 <div class="snippet-box">
