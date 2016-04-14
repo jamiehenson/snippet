@@ -1,5 +1,6 @@
 # snippet
 [![Bower](https://img.shields.io/bower/v/snippet.svg)](https://github.com/jamiehenson/snippet)
+[![NPM](https://img.shields.io/npm/v/snippet-box.svg)](https://github.com/jamiehenson/snippet)
 
 An easy way to glam up your truncated comments/reviews/whatever!
 
