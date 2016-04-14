@@ -1,5 +1,6 @@
 # snippet
 [![Bower](https://img.shields.io/bower/v/snippet.svg)](https://github.com/jamiehenson/snippet)
+[![NPM](https://img.shields.io/npm/v/snippet-box.svg)](https://github.com/jamiehenson/snippet)
 
 An easy way to glam up your truncated comments/reviews/whatever!
 
@@ -18,7 +19,7 @@ Alternatively, download the latest release from here, and include snippet.css an
 
 ### Usage
 
-It's very easy to set up one of these boxes. Just include snippet.css (or the supplied SASS version) and snippet.js in your page, and then use the following markup:
+It's very easy to set up one of these boxes. Just include snippet.css (or the supplied SASS version) and snippet.js (or the CoffeeScript version) in your page, and then use the following markup:
 
 ```
 <div class="snippet-box">
@@ -29,9 +30,9 @@ It's very easy to set up one of these boxes. Just include snippet.css (or the su
 </div>
 ```
   
-Append whatever styling classes and data attributes you like to the *snippet-expander* element. More information on that below.
+Append whatever styling classes and data attributes you like to the *snippet-expander* element. Additionally, you can always style the key divs however you like with your own CSS. More information on the provided stuff below:
 
-### Options (with classes)
+### Classes
 #### Styles
 - snippet-pulldown
 - snippet-reveal
@@ -74,3 +75,5 @@ Append whatever styling classes and data attributes you like to the *snippet-exp
 ### Dependencies
 Snippet needs jQuery to run. Bower will pull down at least version 2.2.1, but this version isn't a hard requirement.
 
+### Feedback
+This is quite a young project so any contributions or bits of feedback are certainly welcome!
