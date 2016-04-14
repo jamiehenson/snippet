@@ -29,7 +29,20 @@ html(lang="en")
       hr
 
       .row
-        .col-xs-4
+        .col-sm-8.col-sm-push-4
+          .demo-wrapper
+            .well
+              .snippet-box
+                .snippet-content(style="max-height: 150px")
+                  = text
+                .snippet-expander.snippet-pulldown.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
+          .demo-wrapper-inline(style="display: none")
+            .well
+              .snippet-box
+                .snippet-content
+                  = text
+                .snippet-expander.snippet-inline-animated(data-collapse="less", data-expand="more", data-length="50", data-speed="20")
+        .col-sm-4.col-sm-pull-8
           h4 Example text
           form
             .form-group
@@ -58,19 +71,6 @@ html(lang="en")
               .form-group
                 label(for="length") Speed (for animated inline)
                 input#speed(type="text" class="form-control" value="20")
-        .col-xs-8
-          .demo-wrapper
-            .well
-              .snippet-box
-                .snippet-content(style="max-height: 150px")
-                  = text
-                .snippet-expander.snippet-pulldown.snippet-md.snippet-success.snippet-center.snippet-tint-dark(data-collapse="less", data-expand="more")
-          .demo-wrapper-inline(style="display: none")
-            .well
-              .snippet-box
-                .snippet-content
-                  = text
-                .snippet-expander.snippet-inline-animated(data-collapse="less", data-expand="more", data-length="50", data-speed="20")
 
       h4 Markup to recreate the above:
       p.code
@@ -130,7 +130,7 @@ html(lang="en")
       p Then...
 
       h2 Basic markup
-      p It's very easy to set up one of these boxes. Just include <strong>snippets.css</strong> (or the supplied SASS version) and <strong>snippets.js</strong> in your page, and then whack down the following markup:
+      p It's very easy to set up one of these boxes. Just include <strong>snippet.css</strong> (or the supplied SASS version) and <strong>snippet.js</strong> in your page, and then whack down the following markup:
 
       pre.language-html
         code.language-html
