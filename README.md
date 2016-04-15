@@ -42,10 +42,10 @@ Append whatever styling classes and data attributes you like to the *snippet-exp
 - snippet-inline-animated
 
 #### Data Attributes
-- data-expand - _(the text used for the "more" button)_
-- data-collapse - _(the text used for the "less" button)_
-- data-length - _(the number of characters to shorten to in inline mode)_
-- data-speed - _(the speed of animation in animated inline mode)_
+- data-expand - _(the text used for the "more" button, defaults to "more")_
+- data-collapse - _(the text used for the "less" button, defaults to "less")_
+- data-length - _(the number of characters to shorten to in inline mode, defaults to 50)_
+- data-speed - _(the speed of animation in animated inline mode, defaults to 20 words per frame)_
 
 #### Sizes
 - snippet-xs
