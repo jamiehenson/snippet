@@ -23,23 +23,11 @@ $(document).ready ->
       boxSize = if $(this).hasClass('open') then openHeight else $(this).siblings('.snippet-content').css("max-height", "")
       $(this).siblings('.snippet-content').css 'max-height', boxSize
 
-      if $(this).hasClass("snippet-shutter-horizontal")
-        $(this).toggleClass "initial"
-
-    $(document).on "click", ".snippet-inline-collapser", ->
-      if $(this).parents(".snippet-content").siblings(".snippet-expander").hasClass 'snippet-inline-animated'
-        manipulateContent($(this).parents(".snippet-content"), true)
-      else
-        manipulateContent($(this).parents(".snippet-content"))
-
-    $(document).on "click", ".snippet-inline-expander", ->
-      if $(this).parents(".snippet-content").siblings(".snippet-expander").hasClass 'snippet-inline-animated'
-        manipulateContent($(this).parents(".snippet-content"), true, true)
-      else
-        manipulateContent($(this).parents(".snippet-content"), false, true)
+      $(this).toggleClass("initial") if $(this).hasClass("snippet-shutter-horizontal")
 
 initialiseSnippets = () ->
   inlineCount = 0
+  textContents = []
   $('.snippet-content').each ->
     expander = $(this).siblings('.snippet-expander')
     initialHeight = $(this).css("max-height")
@@ -59,6 +47,18 @@ initialiseSnippets = () ->
       $(this).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
       expander.addClass "closed-fully"
 
+  $(document).on "click", ".snippet-inline-collapser", ->
+    if $(this).parents(".snippet-content").siblings(".snippet-expander").hasClass 'snippet-inline-animated'
+      manipulateContent($(this).parents(".snippet-content"), true)
+    else
+      manipulateContent($(this).parents(".snippet-content"))
+
+  $(document).on "click", ".snippet-inline-expander", ->
+    if $(this).parents(".snippet-content").siblings(".snippet-expander").hasClass 'snippet-inline-animated'
+      manipulateContent($(this).parents(".snippet-content"), true, true)
+    else
+      manipulateContent($(this).parents(".snippet-content"), false, true)
+
 manipulateContent = (element, animated, expand) ->
   content = $(element).text()
   index = $(element).data("index")
@@ -66,6 +66,7 @@ manipulateContent = (element, animated, expand) ->
   lessText = $(element).siblings(".snippet-expander").attr("data-collapse") || "less"
   truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50
   speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20
+
   return if content.split(" ").length <= truncationLength
 
   if animated and expand

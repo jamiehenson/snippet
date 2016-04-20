@@ -8,7 +8,7 @@ $(document).ready(function() {
     $(document).ajaxSuccess(function() {
       return initialiseSnippets();
     });
-    $('.snippet-expander').click(function() {
+    return $('.snippet-expander').click(function() {
       var boxSize, element, openHeight;
       if ($(this).hasClass('open')) {
         $(this).removeClass('open').removeClass("open-fully").addClass('closed');
@@ -32,27 +32,14 @@ $(document).ready(function() {
         return $(this).toggleClass("initial");
       }
     });
-    $(document).on("click", ".snippet-inline-collapser", function() {
-      if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
-        return manipulateContent($(this).parents(".snippet-content"), true);
-      } else {
-        return manipulateContent($(this).parents(".snippet-content"));
-      }
-    });
-    return $(document).on("click", ".snippet-inline-expander", function() {
-      if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
-        return manipulateContent($(this).parents(".snippet-content"), true, true);
-      } else {
-        return manipulateContent($(this).parents(".snippet-content"), false, true);
-      }
-    });
   }
 });
 
 initialiseSnippets = function() {
   var inlineCount;
   inlineCount = 0;
-  return $('.snippet-content').each(function() {
+  textContents = [];
+  $('.snippet-content').each(function() {
     var expander, initialHeight, initialWidth;
     expander = $(this).siblings('.snippet-expander');
     initialHeight = $(this).css("max-height");
@@ -73,6 +60,20 @@ initialiseSnippets = function() {
       $(this).siblings('.snippet-shutter-horizontal').css("border-width", " 0 " + parseInt(initialWidth) / 2);
       $(this).siblings('.snippet-shutter-horizontal').css("padding-top", parseInt(initialHeight) / 2);
       return expander.addClass("closed-fully");
+    }
+  });
+  $(document).on("click", ".snippet-inline-collapser", function() {
+    if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+      return manipulateContent($(this).parents(".snippet-content"), true);
+    } else {
+      return manipulateContent($(this).parents(".snippet-content"));
+    }
+  });
+  return $(document).on("click", ".snippet-inline-expander", function() {
+    if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+      return manipulateContent($(this).parents(".snippet-content"), true, true);
+    } else {
+      return manipulateContent($(this).parents(".snippet-content"), false, true);
     }
   });
 };
