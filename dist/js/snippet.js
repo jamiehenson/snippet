@@ -1,22 +1,70 @@
-var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
+var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, initialiseSnippets, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
 
 textContents = [];
 
 $(document).ready(function() {
-  var initialHeight, initialWidth, inlineCount;
-  initialHeight = $('.snippet-content').css("max-height");
-  initialWidth = $('.snippet-content').css("width");
-  $('.snippet-reveal').css("line-height", initialHeight);
+  if ($(".snippet-box").length > 0) {
+    initialiseSnippets();
+    $(document).ajaxSuccess(function() {
+      return initialiseSnippets();
+    });
+    $('.snippet-expander').click(function() {
+      var boxSize, element, openHeight;
+      if ($(this).hasClass('open')) {
+        $(this).removeClass('open').removeClass("open-fully").addClass('closed');
+        $(this).siblings('.snippet-content').addClass('closed').removeClass('open');
+        element = $(this);
+        setTimeout((function() {
+          return element.addClass("closed-fully");
+        }), 500);
+      } else {
+        $(this).removeClass('closed').removeClass("closed-fully").addClass('open');
+        $(this).siblings('.snippet-content').addClass('open').removeClass('closed');
+        element = $(this);
+        setTimeout((function() {
+          return element.addClass("open-fully");
+        }), 500);
+      }
+      openHeight = $(this).siblings('.snippet-content')[0].scrollHeight + 'px';
+      boxSize = $(this).hasClass('open') ? openHeight : $(this).siblings('.snippet-content').css("max-height", "");
+      $(this).siblings('.snippet-content').css('max-height', boxSize);
+      if ($(this).hasClass("snippet-shutter-horizontal")) {
+        return $(this).toggleClass("initial");
+      }
+    });
+    $(document).on("click", ".snippet-inline-collapser", function() {
+      if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+        return manipulateContent($(this).parents(".snippet-content"), true);
+      } else {
+        return manipulateContent($(this).parents(".snippet-content"));
+      }
+    });
+    return $(document).on("click", ".snippet-inline-expander", function() {
+      if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+        return manipulateContent($(this).parents(".snippet-content"), true, true);
+      } else {
+        return manipulateContent($(this).parents(".snippet-content"), false, true);
+      }
+    });
+  }
+});
+
+initialiseSnippets = function() {
+  var inlineCount;
   inlineCount = 0;
-  $('.snippet-content').each(function() {
-    var expander;
+  return $('.snippet-content').each(function() {
+    var expander, initialHeight, initialWidth;
     expander = $(this).siblings('.snippet-expander');
+    initialHeight = $(this).css("max-height");
+    initialWidth = $(this).css("width");
     if (expander.hasClass('snippet-inline') || expander.hasClass('snippet-inline-animated')) {
       $(this).data("index", inlineCount);
       inlineCount++;
       $(this).css("max-height", "initial");
       textContents.push($(this).html());
       return manipulateContent(this);
+    } else if (expander.hasClass("snippet-reveal")) {
+      return expander.css("line-height", initialHeight);
     } else {
       if ($(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10) {
         expander.hide();
@@ -27,45 +75,7 @@ $(document).ready(function() {
       return expander.addClass("closed-fully");
     }
   });
-  $('.snippet-expander').click(function() {
-    var boxSize, element, openHeight;
-    if ($(this).hasClass('open')) {
-      $(this).removeClass('open').removeClass("open-fully").addClass('closed');
-      $(this).siblings('.snippet-content').addClass('closed').removeClass('open');
-      element = $(this);
-      setTimeout((function() {
-        return element.addClass("closed-fully");
-      }), 500);
-    } else {
-      $(this).removeClass('closed').removeClass("closed-fully").addClass('open');
-      $(this).siblings('.snippet-content').addClass('open').removeClass('closed');
-      element = $(this);
-      setTimeout((function() {
-        return element.addClass("open-fully");
-      }), 500);
-    }
-    openHeight = $(this).siblings('.snippet-content')[0].scrollHeight + 'px';
-    boxSize = $(this).hasClass('open') ? openHeight : initialHeight;
-    $(this).siblings('.snippet-content').css('max-height', boxSize);
-    if ($(this).hasClass("snippet-shutter-horizontal")) {
-      return $(this).toggleClass("initial");
-    }
-  });
-  $(document).on("click", ".snippet-inline-collapser", function() {
-    if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
-      return manipulateContent($(this).parents(".snippet-content"), true);
-    } else {
-      return manipulateContent($(this).parents(".snippet-content"));
-    }
-  });
-  return $(document).on("click", ".snippet-inline-expander", function() {
-    if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
-      return manipulateContent($(this).parents(".snippet-content"), true, true);
-    } else {
-      return manipulateContent($(this).parents(".snippet-content"), false, true);
-    }
-  });
-});
+};
 
 manipulateContent = function(element, animated, expand) {
   var content, index, lessText, moreText, speed, truncationLength;
