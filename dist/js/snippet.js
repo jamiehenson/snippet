@@ -1,4 +1,4 @@
-var appendCollapser, appendExpander, feedWords, feedWordsReverse, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
+var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
 
 textContents = [];
 
@@ -15,7 +15,7 @@ $(document).ready(function() {
       $(this).data("index", inlineCount);
       inlineCount++;
       $(this).css("max-height", "initial");
-      textContents.push($(this).text());
+      textContents.push($(this).html());
       return manipulateContent(this);
     } else {
       if ($(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10) {
@@ -52,17 +52,17 @@ $(document).ready(function() {
     }
   });
   $(document).on("click", ".snippet-inline-collapser", function() {
-    if ($(this).parent().siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
-      return manipulateContent($(this).parent(), true);
+    if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+      return manipulateContent($(this).parents(".snippet-content"), true);
     } else {
-      return manipulateContent($(this).parent());
+      return manipulateContent($(this).parents(".snippet-content"));
     }
   });
   return $(document).on("click", ".snippet-inline-expander", function() {
-    if ($(this).parent().siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
-      return manipulateContent($(this).parent(), true, true);
+    if ($(this).parents(".snippet-content").siblings(".snippet-expander").hasClass('snippet-inline-animated')) {
+      return manipulateContent($(this).parents(".snippet-content"), true, true);
     } else {
-      return manipulateContent($(this).parent(), false, true);
+      return manipulateContent($(this).parents(".snippet-content"), false, true);
     }
   });
 });
@@ -80,10 +80,11 @@ manipulateContent = function(element, animated, expand) {
   }
   if (animated && expand) {
     removeExpander(element);
-    return feedWords(element, truncationLength, textContents[index].split(" "), lessText, speed);
+    $(element).html("");
+    return feedWords(element, 0, textContents[index].split(" "), lessText, speed);
   } else if (expand) {
     removeExpander(element);
-    $(element).text(textContents[index]);
+    $(element).html(textContents[index]);
     return appendCollapser(element, lessText);
   } else if (animated) {
     removeCollapser(element);
@@ -100,7 +101,7 @@ feedWords = function(element, offset, words, label, speed) {
     return;
   }
   return setTimeout((function() {
-    $(element).append(" " + words.slice(offset + 1, +(offset + speed) + 1 || 9e9).join(" "));
+    $(element).html($(element).html() + " " + words.slice(offset, +(offset + speed) + 1 || 9e9).join(" "));
     return feedWords(element, offset + speed, words, label, speed);
   }), 1);
 };
@@ -121,16 +122,27 @@ feedWordsReverse = function(element, limit, label, speed, index) {
 };
 
 truncateContent = function(element, truncationLength, label, index) {
-  $(element).text(textContents[index].split(" ").slice(0, +truncationLength + 1 || 9e9).join(" "));
+  $(element).html(textContents[index].split(" ").slice(0, +truncationLength + 1 || 9e9).join(" "));
   return appendExpander(element, label);
 };
 
 appendExpander = function(element, label) {
-  return $(element).append("<span class='snippet-inline-expander'>... <a>(" + label + ")</a></span>");
+  return appendTag(element, label, "<span class='snippet-inline-expander'>... <a>(" + label + ")</a></span>");
 };
 
 appendCollapser = function(element, label) {
-  return $(element).append("<span class='snippet-inline-collapser'> <a>(" + label + ")</a></span>");
+  return appendTag(element, label, "<span class='snippet-inline-collapser'> <a>(" + label + ")</a></span>");
+};
+
+appendTag = function(element, label, tag) {
+  var content, lastTag;
+  content = $(element).html();
+  lastTag = content.lastIndexOf("<");
+  if (lastTag === -1) {
+    return $(element).append(tag);
+  } else {
+    return $(element).html([content.slice(0, lastTag), tag, content.slice(lastTag)].join(''));
+  }
 };
 
 removeExpander = function(element) {

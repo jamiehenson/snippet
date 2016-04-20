@@ -12,7 +12,7 @@ $(document).ready ->
       $(this).data("index", inlineCount)
       inlineCount++
       $(this).css("max-height", "initial")
-      textContents.push $(this).text()
+      textContents.push $(this).html()
       manipulateContent(this)
     else
       expander.hide() if $(this)[0].scrollHeight <= parseInt($(this).css('max-height')) + 10
@@ -41,16 +41,16 @@ $(document).ready ->
       $(this).toggleClass "initial"
 
   $(document).on "click", ".snippet-inline-collapser", ->
-    if $(this).parent().siblings(".snippet-expander").hasClass 'snippet-inline-animated'
-      manipulateContent($(this).parent(), true)
+    if $(this).parents(".snippet-content").siblings(".snippet-expander").hasClass 'snippet-inline-animated'
+      manipulateContent($(this).parents(".snippet-content"), true)
     else
-      manipulateContent($(this).parent())
+      manipulateContent($(this).parents(".snippet-content"))
 
   $(document).on "click", ".snippet-inline-expander", ->
-    if $(this).parent().siblings(".snippet-expander").hasClass 'snippet-inline-animated'
-      manipulateContent($(this).parent(), true, true)
+    if $(this).parents(".snippet-content").siblings(".snippet-expander").hasClass 'snippet-inline-animated'
+      manipulateContent($(this).parents(".snippet-content"), true, true)
     else
-      manipulateContent($(this).parent(), false, true)
+      manipulateContent($(this).parents(".snippet-content"), false, true)
 
 manipulateContent = (element, animated, expand) ->
   content = $(element).text()
@@ -59,15 +59,15 @@ manipulateContent = (element, animated, expand) ->
   lessText = $(element).siblings(".snippet-expander").attr("data-collapse") || "less"
   truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50
   speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20
-
   return if content.split(" ").length <= truncationLength
 
   if animated and expand
     removeExpander(element)
-    feedWords(element, truncationLength, textContents[index].split(" "), lessText, speed)
+    $(element).html("")
+    feedWords(element, 0, textContents[index].split(" "), lessText, speed)
   else if expand
     removeExpander(element)
-    $(element).text(textContents[index])
+    $(element).html(textContents[index])
     appendCollapser(element, lessText)
   else if animated
     removeCollapser(element)
@@ -81,7 +81,7 @@ feedWords = (element, offset, words, label, speed) ->
     appendCollapser(element, label)
     return
   setTimeout (->
-    $(element).append(" " + words[offset + 1..(offset + speed)].join(" "))
+    $(element).html($(element).html() + " " + words[offset..(offset + speed)].join(" "))
     feedWords(element, offset + speed, words, label, speed)
   ), 1
 
@@ -97,14 +97,19 @@ feedWordsReverse = (element, limit, label, speed, index) ->
   ), 1
 
 truncateContent = (element, truncationLength, label, index) ->
-  $(element).text(textContents[index].split(" ")[0..truncationLength].join(" "))
+  $(element).html(textContents[index].split(" ")[0..truncationLength].join(" "))
   appendExpander(element, label)
 
 appendExpander = (element, label) ->
-  $(element).append("<span class='snippet-inline-expander'>... <a>(" + label + ")</a></span>")
+  appendTag element, label, "<span class='snippet-inline-expander'>... <a>(" + label + ")</a></span>"
 
 appendCollapser = (element, label) ->
-  $(element).append("<span class='snippet-inline-collapser'> <a>(" + label + ")</a></span>")
+  appendTag element, label, "<span class='snippet-inline-collapser'> <a>(" + label + ")</a></span>"
+
+appendTag = (element, label, tag) ->
+  content = $(element).html()
+  lastTag = content.lastIndexOf("<")
+  if lastTag == -1 then $(element).append tag else $(element).html [content.slice(0, lastTag), tag, content.slice(lastTag)].join('')
 
 removeExpander = (element) ->
   $(element).find(".snippet-inline-expander").remove()
