@@ -1,4 +1,5 @@
 textContents = []
+inlineCount = 0
 
 $(document).ready ->
   if $(".snippet-box").length > 0
@@ -26,9 +27,8 @@ $(document).ready ->
       $(this).toggleClass("initial") if $(this).hasClass("snippet-shutter-horizontal")
 
 initialiseSnippets = () ->
-  inlineCount = 0
-  textContents = []
-  $('.snippet-content').each ->
+  $('.snippet-content:not(.processed)').each ->
+    $(this).addClass("processed")
     expander = $(this).siblings('.snippet-expander')
     initialHeight = $(this).css("max-height")
     initialWidth = $(this).css("width")

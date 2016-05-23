@@ -1,6 +1,8 @@
-var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, initialiseSnippets, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
+var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, initialiseSnippets, inlineCount, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
 
 textContents = [];
+
+inlineCount = 0;
 
 $(document).ready(function() {
   if ($(".snippet-box").length > 0) {
@@ -36,11 +38,9 @@ $(document).ready(function() {
 });
 
 initialiseSnippets = function() {
-  var inlineCount;
-  inlineCount = 0;
-  textContents = [];
-  $('.snippet-content').each(function() {
+  $('.snippet-content:not(.processed)').each(function() {
     var expander, initialHeight, initialWidth;
+    $(this).addClass("processed");
     expander = $(this).siblings('.snippet-expander');
     initialHeight = $(this).css("max-height");
     initialWidth = $(this).css("width");
