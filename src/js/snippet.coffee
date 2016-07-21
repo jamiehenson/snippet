@@ -67,7 +67,7 @@ manipulateContent = (element, animated, expand) ->
   truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50
   speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20
 
-  return if content.split(" ").length <= truncationLength
+  return if textContents[index].split(" ").length <= truncationLength
 
   if animated and expand
     removeExpander(element)
