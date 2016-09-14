@@ -1,7 +1,7 @@
 {
   "name": "snippet-box",
   "description": "An easy way to glam up your truncated comments/reviews/whatever!",
-  "version": "0.5.0",
+  "version": "0.4.6",
   "main": "Gulpfile.js",
   "directories": {
     "example": "example"
