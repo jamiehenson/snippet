@@ -1,10 +1,10 @@
-var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, initialiseSnippets, inlineCount, manipulateContent, removeCollapser, removeExpander, textContents, truncateContent;
+var appendCollapser, appendExpander, appendTag, feedWords, feedWordsReverse, initialiseSnippets, inlineCount, manipulateContent, removeCollapser, removeExpander, snippetReady, textContents, truncateContent;
 
 textContents = [];
 
 inlineCount = 0;
 
-$(document).ready(function() {
+snippetReady = function() {
   if ($(".snippet-box").length > 0) {
     initialiseSnippets();
     $(document).ajaxSuccess(function() {
@@ -35,7 +35,7 @@ $(document).ready(function() {
       }
     });
   }
-});
+};
 
 initialiseSnippets = function() {
   $('.snippet-content:not(.processed)').each(function() {
@@ -86,7 +86,7 @@ manipulateContent = function(element, animated, expand) {
   lessText = $(element).siblings(".snippet-expander").attr("data-collapse") || "less";
   truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50;
   speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20;
-  if (textContents[index].split(" ").length <= truncationLength) {
+  if (content.split(" ").length <= truncationLength) {
     return;
   }
   if (animated && expand) {
@@ -163,3 +163,9 @@ removeExpander = function(element) {
 removeCollapser = function(element) {
   return $(element).find(".snippet-inline-collapser").remove();
 };
+
+$(document).ready(snippetReady);
+
+$(document).on('page:load', snippetReady);
+
+$(document).on('turbolinks:load', snippetReady);

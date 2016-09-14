@@ -1,7 +1,7 @@
 textContents = []
 inlineCount = 0
 
-$(document).ready ->
+snippetReady = () ->
   if $(".snippet-box").length > 0
     initialiseSnippets()
 
@@ -67,7 +67,7 @@ manipulateContent = (element, animated, expand) ->
   truncationLength = parseInt($(element).siblings('.snippet-expander').attr("data-length")) || 50
   speed = parseInt($(element).siblings('.snippet-expander').attr("data-speed")) || 20
 
-  return if textContents[index].split(" ").length <= truncationLength
+  return if content.split(" ").length <= truncationLength
 
   if animated and expand
     removeExpander(element)
@@ -124,3 +124,7 @@ removeExpander = (element) ->
 
 removeCollapser = (element) ->
   $(element).find(".snippet-inline-collapser").remove()
+
+$(document).ready(snippetReady) # Standard
+$(document).on('page:load', snippetReady) # Turbolinks
+$(document).on('turbolinks:load', snippetReady) # Turbolinks on Rails 5
